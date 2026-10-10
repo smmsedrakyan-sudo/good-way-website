@@ -190,8 +190,12 @@ form.addEventListener("submit", async function(event) {
     );
 
     if (!response.ok) {
-      throw new Error("Հայտը չհաջողվեց ուղարկել։");
-    }
+  const errorText = await response.text();
+  console.error("Supabase error:", response.status, errorText);
+  message.textContent =
+    "Սխալ " + response.status + ": " + errorText;
+  return;
+}
 
     form.reset();
     message.textContent = "Շնորհակալություն։ Քո հայտը հաջողությամբ ուղարկվեց։";
