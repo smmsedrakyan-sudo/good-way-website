@@ -2,165 +2,289 @@
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Good Way | Admin</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f3f3f3;
-      color: #171717;
-    }
-    .wrap {
-      max-width: 440px;
-      margin: 55px auto;
-      padding: 20px;
-    }
-    .card {
-      background: white;
-      padding: 28px;
-      border: 1px solid #ddd;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px #0000000b;
-    }
-    h1 { font-size: 25px; margin: 0 0 8px; }
-    p { color: #666; line-height: 1.5; }
-    label { display: block; margin-top: 18px; font-size: 14px; }
-    input {
-      width: 100%;
-      padding: 13px;
-      margin-top: 7px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 20px;
-      background: #171717;
-      color: white;
-      border: 0;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .hidden { display: none; }
-    #message { font-size: 14px; overflow-wrap: anywhere; }
-    .item {
-      padding: 14px;
-      border: 1px solid #ddd;
-      border-radius: 9px;
-      margin-top: 10px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Good Way — Admin</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f5f5f5;color:#171717;font:16px Arial,sans-serif}
+main{max-width:1100px;margin:auto;padding:20px}
+section,.panel{background:white;border:1px solid #ddd;border-radius:14px;padding:20px;margin:14px 0}
+.hidden{display:none!important}
+input,textarea,select,button{font:inherit;padding:11px;border-radius:8px;border:1px solid #ccc}
+input,textarea,select{width:100%;margin:6px 0 14px}
+textarea{min-height:80px}
+button{background:#171717;color:white;cursor:pointer;border:0;width:auto}
+.secondary{background:white;color:#171717;border:1px solid #ccc}
+.danger{background:#a52828}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+nav button{background:white;color:#171717;border:1px solid #ccc}
+nav button.active{background:#171717;color:white}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.list{display:grid;gap:10px}
+.item{border:1px solid #ddd;border-radius:10px;padding:14px;overflow-wrap:anywhere}
+.notice{padding:12px;background:#eee;border-radius:8px;margin:10px 0;overflow-wrap:anywhere}
+.error{background:#ffe6e6;color:#8b1111}
+.success{background:#e6f7e9;color:#17632c}
+table{border-collapse:collapse;width:100%;min-width:750px}
+th,td{text-align:left;padding:10px;border-bottom:1px solid #ddd;vertical-align:top}
+.tablewrap{overflow-x:auto}
+label{display:block}
+@media(max-width:600px){main{padding:8px}section,.panel{padding:12px}}
+</style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="card" id="login">
-      <h1>GOOD WAY</h1>
-      <p>Կազմակերպության կառավարման համակարգ</p>
+<main>
+<section id="login">
+<h1>GOOD WAY</h1>
+<h2>Կառավարման վահանակ</h2>
+<form id="loginForm">
+<label>Էլեկտրոնային հասցե</label>
+<input id="email" type="email" value="samsedrakyan15@gmail.com" required>
+<label>Գաղտնաբառ</label>
+<input id="password" type="password" required>
+<button type="submit" style="width:100%">Մուտք գործել</button>
+</form>
+<div id="loginMsg" class="notice hidden"></div>
+</section>
 
-      <form id="loginForm">
-        <label for="email">Էլեկտրոնային հասցե</label>
-        <input id="email" type="email" required
-          autocomplete="username" placeholder="Քո էլ. հասցեն">
+<div id="dashboard" class="hidden">
+<header class="panel row">
+<div><b>GOOD WAY / ADMIN</b><div id="who"></div></div>
+<button id="logout" class="secondary">Դուրս գալ</button>
+</header>
+<div id="message" class="notice hidden"></div>
 
-        <label for="password">Գաղտնաբառ</label>
-        <input id="password" type="password" required
-          autocomplete="current-password" placeholder="Գաղտնաբառը">
+<nav>
+<button data-tab="applications" class="active">📋 Հայտեր</button>
+<button data-tab="programs">📚 Ծրագրեր</button>
+<button data-tab="events">📅 Միջոցառումներ</button>
+<button data-tab="gallery">🖼️ Պատկերասրահ</button>
+<button data-tab="settings">⚙️ Կայքի տվյալներ</button>
+</nav>
 
-        <button type="submit" id="loginButton">Մուտք գործել</button>
-      </form>
-      <p id="message" role="status"></p>
-    </section>
+<section id="tab-applications">
+<div class="row"><h2>Կամավորների հայտեր</h2><button id="refresh" class="secondary">Թարմացնել</button></div>
+<div id="appsMsg" class="notice hidden"></div>
+<div class="tablewrap"><table>
+<thead><tr><th>Անուն</th><th>Email</th><th>Հեռախոս</th><th>Տարիք</th><th>Ծրագիր</th><th>Կարգավիճակ</th><th></th></tr></thead>
+<tbody id="apps"></tbody>
+</table></div>
+</section>
 
-    <section class="card hidden" id="dashboard">
-      <h1>Բարի գալուստ</h1>
-      <p id="account"></p>
-      <p>Good Way-ի ադմինի վահանակ</p>
+<section id="tab-programs" class="hidden">
+<div class="row"><h2>Ծրագրեր</h2><button id="newProgram">+ Ավելացնել</button></div>
+<form id="programForm" class="hidden">
+<input id="programId" type="hidden">
+<label>Ծրագրի անուն *</label><input id="programTitle" required>
+<label>Նկարագրություն</label><textarea id="programDescription"></textarea>
+<label>Նկարի URL</label><input id="programImage" type="url">
+<label>Գրանցման հղում</label><input id="programLink" type="url">
+<label><input id="programPublished" type="checkbox" style="width:auto"> Հրապարակել</label>
+<button>Պահպանել</button> <button type="button" id="cancelProgram" class="secondary">Չեղարկել</button>
+</form>
+<div id="programsMsg" class="notice hidden"></div><div id="programs" class="list"></div>
+</section>
 
-      <div class="item">📋 Կամավորների հայտեր</div>
-      <div class="item">📚 Ծրագրեր</div>
-      <div class="item">📅 Միջոցառումներ</div>
-      <div class="item">🖼️ Պատկերասրահ</div>
-      <div class="item">⚙️ Կայքի կարգավորումներ</div>
+<section id="tab-events" class="hidden">
+<div class="row"><h2>Միջոցառումներ</h2><button id="newEvent">+ Ավելացնել</button></div>
+<form id="eventForm" class="hidden">
+<input id="eventId" type="hidden">
+<label>Միջոցառման անուն *</label><input id="eventTitle" required>
+<label>Ամսաթիվ և ժամ</label><input id="eventDate" type="datetime-local">
+<label>Վայր</label><input id="eventLocation">
+<label>Նկարագրություն</label><textarea id="eventDescription"></textarea>
+<label>Նկարի URL</label><input id="eventImage" type="url">
+<label>Գրանցման հղում</label><input id="eventLink" type="url">
+<label><input id="eventPublished" type="checkbox" style="width:auto"> Հրապարակել</label>
+<button>Պահպանել</button> <button type="button" id="cancelEvent" class="secondary">Չեղարկել</button>
+</form>
+<div id="eventsMsg" class="notice hidden"></div><div id="events" class="list"></div>
+</section>
 
-      <p>Բաժինների կառավարումը կակտիվացնենք հաջորդ քայլերում։</p>
-      <button id="logoutButton">Դուրս գալ</button>
-    </section>
-  </main>
+<section id="tab-gallery" class="hidden">
+<h2>Պատկերասրահ</h2>
+<form id="galleryForm">
+<label>Նկարի վերնագիր</label><input id="galleryTitle">
+<label>Նկարի URL *</label><input id="galleryUrl" type="url" required>
+<button>Ավելացնել նկար</button>
+</form>
+<div id="galleryMsg" class="notice hidden"></div><div id="gallery" class="list"></div>
+</section>
 
-  <script>
-    const SUPABASE_URL =
-      "https://hcggnmvnqefhfrasyfdd.supabase.co";
+<section id="tab-settings" class="hidden">
+<h2>Կայքի տվյալներ</h2>
+<form id="settingsForm">
+<label>Գլխավոր վերնագիր</label><input id="siteTitle">
+<label>Մեր մասին</label><textarea id="siteAbout"></textarea>
+<label>Կոնտակտային email</label><input id="siteEmail" type="email">
+<label>Հեռախոս</label><input id="sitePhone">
+<button>Պահպանել տվյալները</button>
+</form>
+<div id="settingsMsg" class="notice hidden"></div>
+</section>
+</div>
+</main>
 
-    const SUPABASE_KEY =
-      "sb_publishable_wyCGqA1H18QvyLOk6vXCcQ_UyR3i0_Z";
-
-    const db = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
-
-    const login = document.getElementById("login");
-    const dashboard = document.getElementById("dashboard");
-    const message = document.getElementById("message");
-    const loginButton = document.getElementById("loginButton");
-
-    function showDashboard(user) {
-      login.classList.add("hidden");
-      dashboard.classList.remove("hidden");
-      document.getElementById("account").textContent =
-        "Մուտք գործած հաշիվ՝ " + user.email;
-    }
-
-    function showLogin() {
-      dashboard.classList.add("hidden");
-      login.classList.remove("hidden");
-    }
-
-    document.getElementById("loginForm")
-      .addEventListener("submit", async function(event) {
-        event.preventDefault();
-        message.textContent = "";
-        loginButton.disabled = true;
-        loginButton.textContent = "Մուտք է կատարվում…";
-
-        try {
-          const { data, error } = await db.auth.signInWithPassword({
-            email: document.getElementById("email").value.trim(),
-            password: document.getElementById("password").value
-          });
-
-          if (error) throw error;
-          showDashboard(data.user);
-        } catch (error) {
-          message.textContent =
-            "Մուտքը չհաջողվեց։ Ստուգիր էլ. հասցեն, գաղտնաբառը և հաշվի հաստատումը։";
-        } finally {
-          loginButton.disabled = false;
-          loginButton.textContent = "Մուտք գործել";
-        }
-      });
-
-    document.getElementById("logoutButton")
-      .addEventListener("click", async function() {
-        await db.auth.signOut();
-        showLogin();
-      });
-
-    async function checkSession() {
-      const { data } = await db.auth.getSession();
-      if (data.session) {
-        showDashboard(data.session.user);
-      }
-    }
-
-    checkSession();
-  </script>
+<script>
+(()=>{
+const URL="https://hcggnmvnqefhfrasyfdd.supabase.co";
+const KEY="sb_publishable_wyCGqA1H18QvyLOk6vXCcQ_UyR3i0_Z";
+const ADMIN="samsedrakyan15@gmail.com".toLowerCase();
+const db=supabase.createClient(URL,KEY);
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let programs=[],events=[];
+function show(id,text,type=""){const e=$(id);e.textContent=text;e.className="notice "+type;}
+function hide(id){$(id).classList.add("hidden");}
+function err(id,e){show(id,e?.message||String(e),"error");}
+async function adminCheck(user){
+if(!user||user.email?.toLowerCase()!==ADMIN){
+await db.auth.signOut();show("loginMsg","Այս հաշիվը ադմինի թույլտվություն չունի։","error");return false;
+}return true;
+}
+function loggedIn(user){
+$("login").classList.add("hidden");$("dashboard").classList.remove("hidden");$("who").textContent=user.email;
+}
+function loggedOut(){
+$("dashboard").classList.add("hidden");$("login").classList.remove("hidden");
+}
+$("loginForm").addEventListener("submit",async e=>{
+e.preventDefault();hide("loginMsg");
+const {data,error}=await db.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});
+if(error){err("loginMsg",error);return;}
+if(await adminCheck(data.user)){loggedIn(data.user);await loadAll();}
+});
+$("logout").onclick=async()=>{await db.auth.signOut();loggedOut();};
+db.auth.onAuthStateChange((event,session)=>{if(event==="SIGNED_OUT")loggedOut();});
+document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{
+document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));
+["applications","programs","events","gallery","settings"].forEach(t=>$("tab-"+t).classList.toggle("hidden",t!==b.dataset.tab));
+});
+async function loadApps(){
+try{
+const {data,error}=await db.from("volunteer_applications").select("*").order("created_at",{ascending:false});
+if(error)throw error;
+$("apps").innerHTML=(data||[]).map(a=>`<tr>
+<td>${esc(a.full_name)}</td><td>${esc(a.email)}</td><td>${esc(a.phone)}</td><td>${esc(a.age)}</td><td>${esc(a.program)}</td>
+<td><select id="status-${esc(a.id)}">${["Նոր","Դիտարկվում է","Հաստատված է","Մերժված է"].map(s=>`<option ${a.status===s?"selected":""}>${s}</option>`).join("")}</select></td>
+<td><button data-save="${esc(a.id)}">Պահպանել</button></td></tr>`).join("")||'<tr><td colspan="7">Հայտեր դեռ չկան։</td></tr>';
+$("apps").querySelectorAll("[data-save]").forEach(b=>b.onclick=async()=>{
+const {error}=await db.from("volunteer_applications").update({status:$("status-"+b.dataset.save).value}).eq("id",b.dataset.save);
+if(error)err("appsMsg",error);else show("appsMsg","Կարգավիճակը պահպանվեց։","success");
+});
+hide("appsMsg");
+}catch(e){err("appsMsg",e);}
+}
+function renderRecords(kind,records){
+const target=kind==="program"?"programs":"events";
+$(target).innerHTML=records.map(r=>`<article class="item">
+<h3>${esc(r.title)}</h3><p>${esc(r.description||"")}</p>
+${r.event_date?`<p>📅 ${esc(new Date(r.event_date).toLocaleString())}</p>`:""}
+${r.location?`<p>📍 ${esc(r.location)}</p>`:""}
+${r.image_url?`<p><a target="_blank" rel="noopener" href="${esc(r.image_url)}">Դիտել նկարը</a></p>`:""}
+${r.registration_url?`<p><a target="_blank" rel="noopener" href="${esc(r.registration_url)}">Գրանցման հղում</a></p>`:""}
+<p>${r.published?"Հրապարակված է":"Սևագիր"}</p>
+<button class="secondary" data-edit="${kind}:${esc(r.id)}">Խմբագրել</button>
+<button class="danger" data-delete="${kind}:${esc(r.id)}">Ջնջել</button></article>`).join("")||"<p>Գրառումներ դեռ չկան։</p>";
+$(target).querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>edit(kind,b.dataset.edit.split(":")[1]));
+$(target).querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>removeRecord(kind,b.dataset.delete.split(":")[1]));
+}
+async function loadRecords(kind){
+const table=kind==="program"?"programs":"events",target=kind==="program"?"programsMsg":"eventsMsg";
+try{
+const {data,error}=await db.from(table).select("*").order("created_at",{ascending:false});if(error)throw error;
+if(kind==="program")programs=data||[];else events=data||[];
+renderRecords(kind,data||[]);hide(target);
+}catch(e){err(target,e);}
+}
+function clearForm(kind){
+if(kind==="program"){
+["programId","programTitle","programDescription","programImage","programLink"].forEach(id=>$(id).value="");
+$("programPublished").checked=false;$("programForm").classList.remove("hidden");
+}else{
+["eventId","eventTitle","eventDate","eventLocation","eventDescription","eventImage","eventLink"].forEach(id=>$(id).value="");
+$("eventPublished").checked=false;$("eventForm").classList.remove("hidden");
+}
+}
+$("newProgram").onclick=()=>clearForm("program");
+$("newEvent").onclick=()=>clearForm("event");
+$("cancelProgram").onclick=()=>$("programForm").classList.add("hidden");
+$("cancelEvent").onclick=()=>$("eventForm").classList.add("hidden");
+function edit(kind,id){
+const r=(kind==="program"?programs:events).find(x=>String(x.id)===String(id));if(!r)return;
+if(kind==="program"){
+$("programId").value=r.id;$("programTitle").value=r.title||"";$("programDescription").value=r.description||"";
+$("programImage").value=r.image_url||"";$("programLink").value=r.registration_url||"";
+$("programPublished").checked=!!r.published;$("programForm").classList.remove("hidden");
+}else{
+$("eventId").value=r.id;$("eventTitle").value=r.title||"";
+$("eventDate").value=r.event_date?r.event_date.slice(0,16):"";
+$("eventLocation").value=r.location||"";$("eventDescription").value=r.description||"";
+$("eventImage").value=r.image_url||"";$("eventLink").value=r.registration_url||"";
+$("eventPublished").checked=!!r.published;$("eventForm").classList.remove("hidden");
+}
+window.scrollTo({top:0,behavior:"smooth"});
+}
+$("programForm").onsubmit=async e=>{
+e.preventDefault();const id=$("programId").value;
+const row={title:$("programTitle").value.trim(),description:$("programDescription").value.trim()||null,image_url:$("programImage").value.trim()||null,registration_url:$("programLink").value.trim()||null,published:$("programPublished").checked};
+try{const q=id?db.from("programs").update(row).eq("id",id):db.from("programs").insert(row);const {error}=await q;if(error)throw error;
+$("programForm").classList.add("hidden");show("programsMsg","Ծրագիրը պահպանվեց։","success");await loadRecords("program");
+}catch(e){err("programsMsg",e);}
+};
+$("eventForm").onsubmit=async e=>{
+e.preventDefault();const id=$("eventId").value;
+const row={title:$("eventTitle").value.trim(),description:$("eventDescription").value.trim()||null,event_date:$("eventDate").value?new Date($("eventDate").value).toISOString():null,location:$("eventLocation").value.trim()||null,image_url:$("eventImage").value.trim()||null,registration_url:$("eventLink").value.trim()||null,published:$("eventPublished").checked};
+try{const q=id?db.from("events").update(row).eq("id",id):db.from("events").insert(row);const {error}=await q;if(error)throw error;
+$("eventForm").classList.add("hidden");show("eventsMsg","Միջոցառումը պահպանվեց։","success");await loadRecords("event");
+}catch(e){err("eventsMsg",e);}
+};
+async function removeRecord(kind,id){
+if(!confirm("Հաստա՞տ ջնջել։"))return;
+const table=kind==="program"?"programs":"events",target=kind==="program"?"programsMsg":"eventsMsg";
+try{const {error}=await db.from(table).delete().eq("id",id);if(error)throw error;show(target,"Ջնջվեց։","success");await loadRecords(kind);}
+catch(e){err(target,e);}
+}
+async function loadGallery(){
+try{
+const {data,error}=await db.from("gallery_items").select("*").order("created_at",{ascending:false});if(error)throw error;
+$("gallery").innerHTML=(data||[]).map(r=>`<article class="item"><b>${esc(r.title||"Նկար")}</b><p><a href="${esc(r.image_url)}" target="_blank" rel="noopener">Բացել նկարը</a></p><button class="danger" data-gdel="${esc(r.id)}">Ջնջել</button></article>`).join("")||"<p>Նկարներ դեռ չկան։</p>";
+$("gallery").querySelectorAll("[data-gdel]").forEach(b=>b.onclick=async()=>{
+if(!confirm("Ջնջե՞լ նկարը։"))return;
+const {error}=await db.from("gallery_items").delete().eq("id",b.dataset.gdel);
+if(error)err("galleryMsg",error);else{show("galleryMsg","Նկարը ջնջվեց։","success");await loadGallery();}
+});
+hide("galleryMsg");
+}catch(e){err("galleryMsg",e);}
+}
+$("galleryForm").onsubmit=async e=>{
+e.preventDefault();
+try{const {error}=await db.from("gallery_items").insert({title:$("galleryTitle").value.trim()||"Նկար",image_url:$("galleryUrl").value.trim()});if(error)throw error;
+$("galleryTitle").value="";$("galleryUrl").value="";show("galleryMsg","Նկարը ավելացվեց։","success");await loadGallery();
+}catch(e){err("galleryMsg",e);}
+};
+async function loadSettings(){
+try{const {data,error}=await db.from("site_settings").select("*").eq("id",1).maybeSingle();if(error)throw error;
+if(data){$("siteTitle").value=data.site_title||"";$("siteAbout").value=data.about_text||"";$("siteEmail").value=data.contact_email||"";$("sitePhone").value=data.contact_phone||"";}
+hide("settingsMsg");
+}catch(e){err("settingsMsg",e);}
+}
+$("settingsForm").onsubmit=async e=>{
+e.preventDefault();
+try{const {error}=await db.from("site_settings").upsert({id:1,site_title:$("siteTitle").value.trim(),about_text:$("siteAbout").value.trim(),contact_email:$("siteEmail").value.trim(),contact_phone:$("sitePhone").value.trim()});if(error)throw error;
+show("settingsMsg","Տվյալները պահպանվեցին։","success");
+}catch(e){err("settingsMsg",e);}
+};
+async function loadAll(){await Promise.all([loadApps(),loadRecords("program"),loadRecords("event"),loadGallery(),loadSettings()]);}
+$("refresh").onclick=loadApps;
+async function start(){
+const {data}=await db.auth.getSession();
+if(data.session&&await adminCheck(data.session.user)){loggedIn(data.session.user);await loadAll();}
+}
+start();
+})();
+</script>
 </body>
 </html>
