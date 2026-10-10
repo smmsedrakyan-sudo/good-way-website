@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Good Way | Admin</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      color: #171717;
+    }
+    .wrap {
+      max-width: 440px;
+      margin: 55px auto;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 28px;
+      border: 1px solid #ddd;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px #0000000b;
+    }
+    h1 { font-size: 25px; margin: 0 0 8px; }
+    p { color: #666; line-height: 1.5; }
+    label { display: block; margin-top: 18px; font-size: 14px; }
+    input {
+      width: 100%;
+      padding: 13px;
+      margin-top: 7px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      background: #171717;
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .hidden { display: none; }
+    #message { font-size: 14px; overflow-wrap: anywhere; }
+    .item {
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 9px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" id="login">
+      <h1>GOOD WAY</h1>
+      <p>Կազմակերպության կառավարման համակարգ</p>
+
+      <form id="loginForm">
+        <label for="email">Էլեկտրոնային հասցե</label>
+        <input id="email" type="email" required
+          autocomplete="username" placeholder="Քո էլ. հասցեն">
+
+        <label for="password">Գաղտնաբառ</label>
+        <input id="password" type="password" required
+          autocomplete="current-password" placeholder="Գաղտնաբառը">
+
+        <button type="submit" id="loginButton">Մուտք գործել</button>
+      </form>
+      <p id="message" role="status"></p>
+    </section>
+
+    <section class="card hidden" id="dashboard">
+      <h1>Բարի գալուստ</h1>
+      <p id="account"></p>
+      <p>Good Way-ի ադմինի վահանակ</p>
+
+      <div class="item">📋 Կամավորների հայտեր</div>
+      <div class="item">📚 Ծրագրեր</div>
+      <div class="item">📅 Միջոցառումներ</div>
+      <div class="item">🖼️ Պատկերասրահ</div>
+      <div class="item">⚙️ Կայքի կարգավորումներ</div>
+
+      <p>Բաժինների կառավարումը կակտիվացնենք հաջորդ քայլերում։</p>
+      <button id="logoutButton">Դուրս գալ</button>
+    </section>
+  </main>
+
+  <script>
+    const SUPABASE_URL =
+      "https://hcggnmvnqefhfrasyfdd.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_wyCGqA1H18QvyLOk6vXCcQ_UyR3i0_Z";
+
+    const db = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+    const login = document.getElementById("login");
+    const dashboard = document.getElementById("dashboard");
+    const message = document.getElementById("message");
+    const loginButton = document.getElementById("loginButton");
+
+    function showDashboard(user) {
+      login.classList.add("hidden");
+      dashboard.classList.remove("hidden");
+      document.getElementById("account").textContent =
+        "Մուտք գործած հաշիվ՝ " + user.email;
+    }
+
+    function showLogin() {
+      dashboard.classList.add("hidden");
+      login.classList.remove("hidden");
+    }
+
+    document.getElementById("loginForm")
+      .addEventListener("submit", async function(event) {
+        event.preventDefault();
+        message.textContent = "";
+        loginButton.disabled = true;
+        loginButton.textContent = "Մուտք է կատարվում…";
+
+        try {
+          const { data, error } = await db.auth.signInWithPassword({
+            email: document.getElementById("email").value.trim(),
+            password: document.getElementById("password").value
+          });
+
+          if (error) throw error;
+          showDashboard(data.user);
+        } catch (error) {
+          message.textContent =
+            "Մուտքը չհաջողվեց։ Ստուգիր էլ. հասցեն, գաղտնաբառը և հաշվի հաստատումը։";
+        } finally {
+          loginButton.disabled = false;
+          loginButton.textContent = "Մուտք գործել";
+        }
+      });
+
+    document.getElementById("logoutButton")
+      .addEventListener("click", async function() {
+        await db.auth.signOut();
+        showLogin();
+      });
+
+    async function checkSession() {
+      const { data } = await db.auth.getSession();
+      if (data.session) {
+        showDashboard(data.session.user);
+      }
+    }
+
+    checkSession();
+  </script>
+</body>
+</html>
