@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Way | Volunteering Organization</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #faf8ff;
+      color: #252039;
+    }
+    header {
+      padding: 22px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+    }
+    .logo { color: #7041a6; font-size: 24px; font-weight: bold; }
+    nav a {
+      color: #302344;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #eee3ff, #faf8ff);
+    }
+    .hero h1 { font-size: clamp(32px, 6vw, 56px); margin-bottom: 16px; }
+    .hero p { font-size: 18px; line-height: 1.7; }
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 26px;
+      border-radius: 30px;
+      background: #7041a6;
+      color: white;
+      text-decoration: none;
+    }
+    section { padding: 55px 8%; text-align: center; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px #2410440d;
+    }
+    footer {
+      padding: 25px;
+      text-align: center;
+      background: #241b32;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">GOOD WAY</div>
+    <nav>
+      <a href="#about">Մեր մասին</a>
+      <a href="#programs">Ծրագրեր</a>
+      <a href="#contact">Կապ</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Բարի գալուստ Good Way</h1>
+      <p>Միասին ստեղծում ենք հնարավորություններ,<br>
+      զարգացնում հմտություններ և փոխում աշխարհը։</p>
+      <a class="button" href="#programs">Բացահայտել ծրագրերը</a>
+    </div>
+
+    <section id="about">
+      <h2>Մեր մասին</h2>
+      <p>Good Way Volunteering Organization-ը հարթակ է՝
+      սովորելու, զարգանալու և կամավորական փորձ ձեռք բերելու համար։</p>
+    </section>
+
+    <section id="programs">
+      <h2>Մեր հնարավորությունները</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Կամավորական ծրագրեր</h3>
+          <p>Միացիր մեր նախաձեռնություններին։</p>
+        </div>
+        <div class="card">
+          <h3>Սեմինարներ և դասընթացներ</h3>
+          <p>Սովորիր նոր հմտություններ։</p>
+        </div>
+        <div class="card">
+          <h3>Թիմային աշխատանք</h3>
+          <p>Ձեռք բեր նոր փորձ և ծանոթություններ։</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Միացի՛ր Good Way-ին</h2>
+      <p>Շուտով այստեղ կտեղադրենք կամավորների գրանցման ձևը։</p>
+    </section>
+  </main>
+
+  <footer>
+    © Good Way Volunteering Organization
+  </footer>
+</body>
+</html>
