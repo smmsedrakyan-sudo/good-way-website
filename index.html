@@ -106,12 +106,100 @@
 
     <section id="contact">
       <h2>Միացի՛ր Good Way-ին</h2>
-      <p>Շուտով այստեղ կտեղադրենք կամավորների գրանցման ձևը։</p>
+      <p> 
+<section id="contact">
+  <h2>Միացի՛ր Good Way-ին</h2>
+  <p>Լրացրո՛ւ հայտը՝ մեր կամավորական թիմին միանալու համար։</p>
+
+  <form id="volunteer-form">
+    <p>
+      <label for="full_name">Անուն, ազգանուն</label><br>
+      <input id="full_name" name="full_name" type="text" required>
+    </p>
+
+    <p>
+      <label for="email">Էլեկտրոնային հասցե</label><br>
+      <input id="email" name="email" type="email" required>
+    </p>
+
+    <p>
+      <label for="phone">Հեռախոսահամար</label><br>
+      <input id="phone" name="phone" type="tel" required>
+    </p>
+
+    <p>
+      <label for="age">Տարիք</label><br>
+      <input id="age" name="age" type="number" min="14" max="100" required>
+    </p>
+
+    <p>
+      <label for="program">Ո՞ր ծրագրին ես ցանկանում միանալ</label><br>
+      <select id="program" name="program" required>
+        <option value="">Ընտրիր ծրագիրը</option>
+        <option value="Կամավորական ծրագրեր">Կամավորական ծրագրեր</option>
+        <option value="Սեմինարներ և դասընթացներ">Սեմինարներ և դասընթացներ</option>
+        <option value="Թիմային աշխատանք">Թիմային աշխատանք</option>
+      </select>
+    </p>
+
+    <button class="button" type="submit">Ուղարկել հայտը</button>
+    <p id="form-message" role="status"></p>
+  </form>
+</section>
+։</p>
     </section>
   </main>
 
   <footer>
     © Good Way Volunteering Organization
   </footer>
+  
+<script>
+const SUPABASE_URL = "https://hcggnmvnqefhfrasyfdd.supabase.co/rest/v1/";
+const SUPABASE_KEY = "sb_publishable_wyCGqA1H18QvyLOk6vXCcQ_UyR3i0_Z";
+
+const form = document.getElementById("volunteer-form");
+const message = document.getElementById("form-message");
+
+form.addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  message.textContent = "Հայտն ուղարկվում է...";
+
+  const application = {
+    full_name: form.full_name.value.trim(),
+    email: form.email.value.trim(),
+    phone: form.phone.value.trim(),
+    age: Number(form.age.value),
+    program: form.program.value
+  };
+
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/volunteer_applications`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": SUPABASE_KEY,
+          "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(application)
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Հայտը չհաջողվեց ուղարկել։");
+    }
+
+    form.reset();
+    message.textContent = "Շնորհակալություն։ Քո հայտը հաջողությամբ ուղարկվեց։";
+  } catch (error) {
+    message.textContent = "Չհաջողվեց ուղարկել հայտը։ Փորձիր ավելի ուշ։";
+    console.error(error);
+  }
+});
+</script>
 </body>
 </html>
