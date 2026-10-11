@@ -2,2021 +2,668 @@
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#17151f">
-
-  <title>GOOD WAY | Volunteering Organization</title>
-  <meta name="description" content="Good Way Volunteering Organization — կամավորություն, կրթություն, սեմինարներ, միջոցառումներ և դրական փոփոխություններ։">
-  <meta property="og:title" content="GOOD WAY — Volunteering Organization">
-  <meta property="og:description" content="Միացի՛ր Good Way-ին և դարձի՛ր դրական փոփոխությունների մի մասը։">
-  <meta property="og:type" content="website">
-
-  <style>
-    :root {
-      --bg: #faf9fc;
-      --surface: #ffffff;
-      --text: #211e2b;
-      --muted: #777180;
-      --purple: #7655c7;
-      --purple-dark: #51368f;
-      --purple-light: #eee8fb;
-      --border: #e9e5ef;
-      --dark: #17151f;
-      --radius: 22px;
-      --shadow: 0 14px 40px rgba(39, 25, 69, 0.08);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 95px;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
-
-    body, input, select, textarea, button {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Arial, sans-serif;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, input, select, textarea {
-      font-size: inherit;
-    }
-
-    button, a, input, select, textarea {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    .container {
-      width: min(1160px, 92%);
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 92px 0;
-    }
-
-    .section-heading {
-      max-width: 730px;
-      margin-bottom: 38px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      color: var(--purple);
-      text-transform: uppercase;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
-    }
-
-    h1, h2, h3 {
-      line-height: 1.2;
-      letter-spacing: -0.6px;
-    }
-
-    h1 {
-      font-size: clamp(40px, 6.4vw, 76px);
-      max-width: 800px;
-    }
-
-    h2 {
-      font-size: clamp(29px, 4vw, 44px);
-      margin-bottom: 16px;
-    }
-
-    h3 {
-      font-size: 21px;
-      margin-bottom: 12px;
-    }
-
-    p {
-      color: var(--muted);
-    }
-
-    .section-heading p {
-      font-size: 16px;
-    }
-
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 9px;
-      padding: 13px 23px;
-      border-radius: 12px;
-      border: 1px solid transparent;
-      cursor: pointer;
-      font-weight: 750;
-      transition: transform .2s, background .2s, box-shadow .2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      color: #fff;
-      background: var(--purple);
-      box-shadow: 0 8px 22px rgba(118, 85, 199, .22);
-    }
-
-    .btn-primary:hover {
-      background: var(--purple-dark);
-    }
-
-    .btn-outline {
-      color: var(--text);
-      border-color: var(--border);
-      background: #fff;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--purple);
-    }
-
-    /* HEADER */
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(250, 249, 252, .94);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(233, 229, 239, .85);
-    }
-
-    .nav {
-      min-height: 78px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      flex-shrink: 0;
-    }
-
-    .brand-mark {
-      width: 45px;
-      height: 45px;
-      display: grid;
-      place-items: center;
-      color: white;
-      background: var(--dark);
-      border-radius: 50%;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
-
-    .brand-copy strong {
-      display: block;
-      font-size: 19px;
-      letter-spacing: 2px;
-      line-height: 1.25;
-    }
-
-    .brand-copy span {
-      display: block;
-      color: var(--muted);
-      font-size: 9px;
-      letter-spacing: 1.15px;
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 23px;
-    }
-
-    .nav-links a {
-      color: #504a5a;
-      font-size: 13px;
-      font-weight: 700;
-      transition: color .2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--purple);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .lang-btn {
-      border: 1px solid var(--border);
-      background: white;
-      color: var(--text);
-      border-radius: 9px;
-      padding: 8px 11px;
-      cursor: pointer;
-      font-weight: 800;
-      font-size: 12px;
-    }
-
-    .menu-btn {
-      display: none;
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--border);
-      background: white;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 22px;
-    }
-
-    /* HERO */
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 104px 0 94px;
-      background:
-        radial-gradient(ellipse at 85% 10%, rgba(158, 128, 225, .18), transparent 35%),
-        radial-gradient(ellipse at 0% 100%, rgba(118, 85, 199, .08), transparent 35%),
-        var(--bg);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      align-items: center;
-      gap: 48px;
-    }
-
-    .hero h1 span {
-      color: var(--purple);
-    }
-
-    .hero-description {
-      max-width: 620px;
-      margin: 24px 0 29px;
-      font-size: 17px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .hero-note {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 35px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .note-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--purple);
-      box-shadow: 0 0 0 6px var(--purple-light);
-      margin-left: 5px;
-      flex-shrink: 0;
-    }
-
-    .hero-art {
-      min-height: 400px;
-      border-radius: 32px;
-      background: var(--dark);
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-      padding: 35px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-art::before,
-    .hero-art::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(255, 255, 255, .12);
-      border-radius: 50%;
-      width: 350px;
-      height: 350px;
-      right: -100px;
-      top: -85px;
-    }
-
-    .hero-art::after {
-      width: 260px;
-      height: 260px;
-      right: -55px;
-      top: -40px;
-      border-color: rgba(178, 150, 239, .4);
-    }
-
-    .art-label {
-      z-index: 1;
-      color: #c7b5f5;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .art-title {
-      z-index: 1;
-      max-width: 350px;
-      font-size: clamp(35px, 4.5vw, 52px);
-      font-weight: 850;
-      line-height: 1.1;
-    }
-
-    .art-title span {
-      color: #bba3f4;
-    }
-
-    .art-bottom {
-      z-index: 1;
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 15px;
-      color: #d0cbd9;
-      font-size: 12px;
-    }
-
-    .art-symbol {
-      width: 60px;
-      height: 60px;
-      display: grid;
-      place-items: center;
-      border: 1px solid #7763a2;
-      border-radius: 50%;
-      color: #d7c9fa;
-      font-size: 28px;
-    }
-
-    /* VALUES STRIP */
-
-    .values-strip {
-      padding: 26px 0;
-      background: #fff;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .value-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .value-icon {
-      width: 45px;
-      height: 45px;
-      flex-shrink: 0;
-      border-radius: 14px;
-      background: var(--purple-light);
-      color: var(--purple-dark);
-      display: grid;
-      place-items: center;
-      font-size: 21px;
-    }
-
-    .value-item strong {
-      display: block;
-      font-size: 15px;
-    }
-
-    .value-item p {
-      font-size: 12px;
-    }
-
-    /* ABOUT */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 58px;
-      align-items: start;
-    }
-
-    .about-panel {
-      background: var(--dark);
-      color: white;
-      padding: 36px;
-      border-radius: var(--radius);
-      position: sticky;
-      top: 105px;
-      overflow: hidden;
-    }
-
-    .about-panel .big-quote {
-      color: #c4aff6;
-      font-size: 68px;
-      line-height: 1;
-      font-weight: 900;
-    }
-
-    .about-panel h3 {
-      font-size: 29px;
-      margin: 15px 0;
-    }
-
-    .about-panel p {
-      color: #d0cbd9;
-    }
-
-    .about-text p {
-      margin-bottom: 17px;
-      font-size: 15px;
-    }
-
-    .about-text strong {
-      color: var(--text);
-    }
-
-    .about-points {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 25px;
-    }
-
-    .about-point {
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
-      background: #fff;
-    }
-
-    .about-point strong {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .about-point p {
-      font-size: 12px;
-      margin: 0;
-    }
-
-    /* PROGRAMS */
-
-    .programs {
-      background: #f1edf8;
-    }
-
-    .program-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .program-card {
-      background: #fff;
-      border: 1px solid rgba(233, 229, 239, .9);
-      border-radius: var(--radius);
-      padding: 30px;
-      transition: transform .2s, box-shadow .2s;
-    }
-
-    .program-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-    }
-
-    .program-number {
-      color: var(--purple);
-      font-weight: 900;
-      font-size: 13px;
-      letter-spacing: 1px;
-      margin-bottom: 24px;
-    }
-
-    .program-card p {
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    .text-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--purple-dark);
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    /* GALLERY */
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr .85fr;
-      grid-template-rows: 220px 220px;
-      gap: 15px;
-    }
-
-    .gallery-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 18px;
-      background: #ded6ec;
-      min-height: 180px;
-    }
-
-    .gallery-card:first-child {
-      grid-row: span 2;
-    }
-
-    .gallery-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .45s;
-    }
-
-    .gallery-card:hover img {
-      transform: scale(1.05);
-    }
-
-    .gallery-card::after {
-      content: "";
-      position: absolute;
-      inset: 35% 0 0;
-      background: linear-gradient(transparent, rgba(15, 12, 23, .78));
-      pointer-events: none;
-    }
-
-    .gallery-caption {
-      position: absolute;
-      z-index: 1;
-      left: 20px;
-      right: 20px;
-      bottom: 17px;
-      color: white;
-      font-weight: 750;
-      font-size: 14px;
-    }
-
-    .gallery-note {
-      font-size: 12px;
-      margin-top: 18px;
-    }
-
-    /* REGISTRATION */
-
-    .join {
-      background: var(--dark);
-      color: white;
-    }
-
-    .join-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 50px;
-      align-items: start;
-    }
-
-    .join .eyebrow {
-      color: #c6b2f5;
-    }
-
-    .join h2 {
-      color: white;
-    }
-
-    .join .section-intro {
-      color: #cbc5d5;
-      font-size: 15px;
-      margin-bottom: 25px;
-    }
-
-    .join-benefits {
-      display: grid;
-      gap: 15px;
-    }
-
-    .join-benefit {
-      display: flex;
-      align-items: start;
-      gap: 12px;
-      color: #e4deed;
-      font-size: 14px;
-    }
-
-    .join-benefit span {
-      color: #c5aff6;
-      font-size: 19px;
-      line-height: 1.2;
-    }
-
-    .form-card {
-      background: white;
-      color: var(--text);
-      padding: 30px;
-      border-radius: 22px;
-      box-shadow: 0 18px 55px rgba(0, 0, 0, .15);
-    }
-
-    .form-card h3 {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-
-    .form-description {
-      font-size: 13px;
-      margin-bottom: 23px;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      min-width: 0;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    .field label {
-      font-size: 12px;
-      font-weight: 800;
-      color: #494252;
-    }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      padding: 12px 13px;
-      border: 1px solid #e3deeb;
-      border-radius: 10px;
-      outline: none;
-      color: var(--text);
-      background: #fdfcff;
-      transition: border-color .2s, box-shadow .2s;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: var(--purple);
-      box-shadow: 0 0 0 3px rgba(118, 85, 199, .1);
-    }
-
-    .field textarea {
-      resize: vertical;
-      min-height: 95px;
-    }
-
-    .consent {
-      display: flex;
-      align-items: start;
-      gap: 9px;
-      margin: 18px 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .consent input {
-      margin-top: 5px;
-      accent-color: var(--purple);
-    }
-
-    .submit-btn {
-      width: 100%;
-      border: 0;
-    }
-
-    .form-message {
-      margin-top: 14px;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 13px;
-      display: none;
-      overflow-wrap: anywhere;
-    }
-
-    .form-message.success {
-      display: block;
-      color: #17643d;
-      background: #e9f8ef;
-    }
-
-    .form-message.error {
-      display: block;
-      color: #9c2525;
-      background: #fff0f0;
-    }
-
-    .privacy-note {
-      margin-top: 13px;
-      font-size: 11px;
-      text-align: center;
-    }
-
-    /* CONTACT */
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .contact-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 24px;
-    }
-
-    .contact-card .value-icon {
-      margin-bottom: 18px;
-    }
-
-    .contact-card h3 {
-      font-size: 17px;
-    }
-
-    .contact-card p,
-    .contact-card a {
-      font-size: 13px;
-      overflow-wrap: anywhere;
-    }
-
-    .contact-card a:hover {
-      color: var(--purple);
-    }
-
-    /* FOOTER */
-
-    .footer {
-      background: #111017;
-      color: white;
-      padding: 35px 0;
-    }
-
-    .footer-main {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 25px;
-      padding-bottom: 25px;
-      border-bottom: 1px solid #302c39;
-    }
-
-    .footer .brand-copy span {
-      color: #aaa2b7;
-    }
-
-    .footer p {
-      color: #aaa2b7;
-      font-size: 12px;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 17px;
-      font-size: 12px;
-    }
-
-    .footer-links a:hover {
-      color: #c8b6f5;
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding-top: 22px;
-    }
-
-    .footer-bottom p {
-      font-size: 11px;
-    }
-
-    .back-top {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 20;
-      width: 43px;
-      height: 43px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--purple);
-      color: white;
-      font-size: 20px;
-      box-shadow: var(--shadow);
-    }
-
-    @media (max-width: 980px) {
-      .nav-links {
-        gap: 13px;
-      }
-
-      .nav-links a {
-        font-size: 12px;
-      }
-
-      .nav-actions .btn {
-        padding: 10px 13px;
-        font-size: 12px;
-      }
-
-      .hero-grid {
-        gap: 25px;
-      }
-
-      .about-grid {
-        gap: 30px;
-      }
-
-      .join-grid {
-        gap: 30px;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .section {
-        padding: 67px 0;
-      }
-
-      .nav {
-        min-height: 70px;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        padding: 20px 5% 25px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        background: #fff;
-        border-bottom: 1px solid var(--border);
-        box-shadow: var(--shadow);
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        padding: 12px 0;
-        font-size: 14px;
-        border-bottom: 1px solid #f0edf4;
-      }
-
-      .nav-actions .btn {
-        display: none;
-      }
-
-      .hero {
-        padding: 68px 0;
-      }
-
-      .hero-grid,
-      .about-grid,
-      .join-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-art {
-        min-height: 330px;
-      }
-
-      .values-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-      }
-
-      .about-panel {
-        position: static;
-      }
-
-      .program-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 250px 180px 180px;
-      }
-
-      .gallery-card:first-child {
-        grid-column: 1 / -1;
-        grid-row: auto;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-main {
-        align-items: start;
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .brand-copy strong {
-        font-size: 16px;
-      }
-
-      .brand-copy span {
-        font-size: 8px;
-        letter-spacing: .7px;
-      }
-
-      .brand-mark {
-        width: 40px;
-        height: 40px;
-      }
-
-      .lang-btn {
-        padding: 8px;
-      }
-
-      .hero h1 {
-        font-size: 42px;
-      }
-
-      .hero-art {
-        min-height: 300px;
-        padding: 25px;
-      }
-
-      .about-points,
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .field.full {
-        grid-column: auto;
-      }
-
-      .form-card {
-        padding: 22px 17px;
-      }
-
-      .gallery-grid {
-        grid-template-rows: 220px 160px 160px;
-        gap: 9px;
-      }
-
-      .gallery-caption {
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-        font-size: 12px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *, *::before, *::after {
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#171717">
+<title>GOOD WAY — Volunteering Organization</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root {
+  --primary: #171717;
+  --secondary: #333333;
+  --bg: #ffffff;
+  --text: #171717;
+  --muted: #717171;
+  --card: #f7f7f7;
+  --line: #e7e7e7;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+img { max-width: 100%; }
+.container { width: min(1120px, 92%); margin: auto; }
+header {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+.nav {
+  min-height: 78px; display: flex; align-items: center;
+  justify-content: space-between; gap: 18px;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 900; letter-spacing: 2px;
+}
+.brand img { max-width: 58px; max-height: 52px; object-fit: contain; }
+.brand-name { font-size: 20px; }
+nav { display: flex; align-items: center; gap: 22px; }
+nav a { font-size: 14px; font-weight: 600; }
+nav a:hover, footer a:hover { opacity: .7; }
+.nav-actions { display: flex; align-items: center; gap: 8px; }
+.lang {
+  border: 1px solid var(--line); background: white;
+  border-radius: 8px; padding: 8px 10px;
+}
+.menu-btn {
+  display: none; border: 0; background: var(--primary);
+  color: white; padding: 9px 12px; border-radius: 8px;
+}
+.hero {
+  min-height: 550px; display: flex; align-items: center;
+  background: var(--secondary) center/cover no-repeat;
+  color: white; position: relative; isolation: isolate;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.25));
+}
+.hero-content { padding: 85px 0; max-width: 750px; }
+.eyebrow {
+  text-transform: uppercase; letter-spacing: 3px;
+  font-size: 12px; font-weight: bold;
+}
+h1 { font-size: clamp(36px,6vw,66px); line-height: 1.1; margin: 18px 0; }
+.hero p { font-size: 18px; max-width: 650px; color: #eeeeee; }
+.btn {
+  display: inline-block; background: var(--primary); color: white;
+  padding: 13px 21px; border: 1px solid var(--primary);
+  border-radius: 7px; font-weight: bold; text-align: center;
+}
+.btn:hover { opacity: .86; }
+.btn-light { background: white; color: #171717; border-color: white; }
+.hero .btn { margin-top: 15px; }
+section.content-section { padding: 75px 0; }
+.section-head { margin-bottom: 30px; }
+.section-head h2 { font-size: clamp(28px,4vw,40px); line-height: 1.2; margin: 0 0 12px; }
+.section-head p { color: var(--muted); max-width: 720px; margin: 0; }
+.about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 42px; align-items: center; }
+.about-image { width: 100%; height: 370px; object-fit: cover; border-radius: 14px; background: var(--card); }
+.about-text { white-space: pre-line; }
+.cards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+.card {
+  border: 1px solid var(--line); border-radius: 13px;
+  overflow: hidden; background: white; display: flex; flex-direction: column;
+}
+.card img { width: 100%; height: 210px; object-fit: cover; background: var(--card); }
+.card-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+.card h3 { margin: 0 0 10px; font-size: 21px; line-height: 1.35; }
+.card p { color: var(--muted); white-space: pre-line; margin: 0 0 17px; }
+.card .btn { margin-top: auto; align-self: flex-start; }
+.event-meta { color: var(--muted); font-size: 14px; margin-bottom: 10px; }
+.empty { color: var(--muted); padding: 20px 0; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
+.gallery-item { border: 0; padding: 0; background: var(--card); border-radius: 10px; overflow: hidden; }
+.gallery-item img { width: 100%; height: 245px; display: block; object-fit: cover; transition: transform .3s; }
+.gallery-item:hover img { transform: scale(1.04); }
+.contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 35px; }
+.contact-list { display: grid; gap: 15px; align-content: start; }
+.contact-list a { overflow-wrap: anywhere; }
+.form-card { padding: 25px; background: var(--card); border-radius: 14px; }
+.field { margin-bottom: 15px; }
+label { display: block; font-weight: 700; margin-bottom: 6px; }
+input, textarea, select {
+  width: 100%; padding: 12px 13px; border: 1px solid #d8d8d8;
+  border-radius: 7px; background: white; color: #171717;
+}
+textarea { min-height: 105px; resize: vertical; }
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+.form-message { margin-top: 15px; padding: 12px; border-radius: 8px; }
+.form-message:empty { display: none; }
+.form-message.error { background: #ffeded; color: #8f1d1d; }
+.form-message.success { background: #e9f8ed; color: #17632c; }
+footer { background: #171717; color: white; padding: 38px 0; }
+.footer-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 25px; flex-wrap: wrap; }
+.footer-links { display: flex; gap: 15px; flex-wrap: wrap; }
+footer p { color: #d0d0d0; margin: 8px 0; }
+#status { color: var(--muted); font-size: 13px; margin-top: 12px; }
+@media(max-width:850px) {
+  .menu-btn { display: inline-block; }
+  nav {
+    display: none; position: absolute; left: 0; right: 0; top: 78px;
+    background: white; padding: 20px 4%; border-bottom: 1px solid var(--line);
+    flex-direction: column; align-items: flex-start; gap: 18px;
+  }
+  nav.open { display: flex; }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:560px) {
+  .brand-name { font-size: 17px; }
+  .hero { min-height: 480px; }
+  .hero-content { padding: 65px 0; }
+  section.content-section { padding: 52px 0; }
+  .cards, .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item img { height: 260px; }
+  .form-card { padding: 17px; }
+}
+</style>
 </head>
-
 <body>
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="#home" aria-label="GOOD WAY Home">
-        <span class="brand-mark">GW</span>
-        <span class="brand-copy">
-          <strong>GOOD WAY</strong>
-          <span data-i18n="brandSubtitle">Volunteering Organization</span>
-        </span>
-      </a>
 
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="#home" data-i18n="navHome">Գլխավոր</a>
-        <a href="#about" data-i18n="navAbout">Մեր մասին</a>
-        <a href="#programs" data-i18n="navPrograms">Ծրագրեր</a>
-        <a href="#gallery" data-i18n="navGallery">Միջոցառումներ</a>
-        <a href="#contact" data-i18n="navContact">Կապ</a>
-      </nav>
-
-      <div class="nav-actions">
-        <button class="lang-btn" id="languageToggle" type="button"
-          aria-label="Switch language">EN</button>
-        <a href="#join" class="btn btn-primary" data-i18n="navJoin">Միացի՛ր մեզ</a>
-        <button class="menu-btn" id="menuToggle" type="button"
-          aria-label="Open menu" aria-expanded="false">☰</button>
-      </div>
+<header>
+  <div class="container nav">
+    <a href="#home" class="brand">
+      <img id="logo" class="hidden" alt="GOOD WAY logo">
+      <span class="brand-name" id="brandName">GOOD WAY</span>
+    </a>
+    <nav id="mainNav">
+      <a href="#home" data-i18n="navHome">Գլխավոր</a>
+      <a href="#about" data-i18n="navAbout">Մեր մասին</a>
+      <a href="#programs" data-i18n="navPrograms">Ծրագրեր</a>
+      <a href="#events" data-i18n="navEvents">Միջոցառումներ</a>
+      <a href="#gallery" data-i18n="navGallery">Պատկերասրահ</a>
+      <a href="#contact" data-i18n="navContact">Կապ</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="lang" id="langBtn" type="button">EN</button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu">☰</button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow" data-i18n="heroEyebrow">
-            Volunteering • Education • Community
-          </span>
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <div class="eyebrow">GOOD WAY VOLUNTEERING ORGANIZATION</div>
+      <h1 id="heroTitle">Միասին ստեղծենք լավ փոփոխություններ</h1>
+      <p id="heroDescription">Միացիր մեր կամավորական թիմին, ձեռք բեր նոր փորձ և դարձիր դրական փոփոխությունների մի մասը։</p>
+      <a class="btn btn-light" href="#join" data-i18n="joinButton">Միանալ թիմին</a>
+    </div>
+  </section>
 
-          <h1 data-i18n="heroTitle">
-            Փոխի՛ր աշխարհը՝ սկսելով <span>քո քայլից։</span>
-          </h1>
-
-          <p class="hero-description" data-i18n="heroDescription">
-            Good Way-ը տարածք է մարդկանց համար, ովքեր ցանկանում են սովորել,
-            զարգանալ, նոր փորձ ձեռք բերել և իրենց ժամանակն ու կարողությունները
-            ծառայեցնել դրական փոփոխություններին։
-          </p>
-
-          <div class="hero-actions">
-            <a href="#join" class="btn btn-primary" data-i18n="heroButton">
-              Դառնալ կամավոր →
-            </a>
-            <a href="#about" class="btn btn-outline" data-i18n="heroSecondary">
-              Բացահայտել Good Way-ը
-            </a>
-          </div>
-
-          <div class="hero-note">
-            <span class="note-dot"></span>
-            <span data-i18n="heroNote">
-              Յուրաքանչյուր մեծ փոփոխություն սկսվում է մեկ քայլից։
-            </span>
-          </div>
+  <section class="content-section" id="about">
+    <div class="container about-grid">
+      <div>
+        <div class="section-head">
+          <h2 data-i18n="aboutTitle">Մեր մասին</h2>
         </div>
-
-        <div class="hero-art">
-          <span class="art-label">GOOD WAY / OUR PURPOSE</span>
-          <div class="art-title">
-            Small steps.<br>
-            <span>Real impact.</span>
-          </div>
-          <div class="art-bottom">
-            <span data-i18n="artBottom">
-              Միասին ստեղծում ենք հնարավորություններ։
-            </span>
-            <span class="art-symbol" aria-hidden="true">↗</span>
-          </div>
-        </div>
+        <p class="about-text" id="aboutText">GOOD WAY-ը կամավորական կազմակերպություն է, որը միավորում է մարդկանց՝ մասնակցելու նախաձեռնությունների, միջոցառումների և համայնքային ծրագրերի։</p>
       </div>
-    </section>
+      <img id="aboutImage" class="about-image hidden" alt="GOOD WAY">
+    </div>
+  </section>
 
-    <!-- VALUES -->
-    <section class="values-strip" aria-label="Our values">
-      <div class="container values-grid">
-        <div class="value-item">
-          <div class="value-icon" aria-hidden="true">✦</div>
-          <div>
-            <strong data-i18n="value1Title">Նախաձեռնողականություն</strong>
-            <p data-i18n="value1Text">Գաղափարից դեպի իրական գործողություն</p>
-          </div>
-        </div>
-
-        <div class="value-item">
-          <div class="value-icon" aria-hidden="true">◎</div>
-          <div>
-            <strong data-i18n="value2Title">Համագործակցություն</strong>
-            <p data-i18n="value2Text">Ավելի ուժեղ ենք՝ աշխատելով միասին</p>
-          </div>
-        </div>
-
-        <div class="value-item">
-          <div class="value-icon" aria-hidden="true">↗</div>
-          <div>
-            <strong data-i18n="value3Title">Շարունակական զարգացում</strong>
-            <p data-i18n="value3Text">Փորձ, գիտելիք և նոր հնարավորություններ</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="container about-grid">
-        <div class="about-panel">
-          <div class="big-quote" aria-hidden="true">“</div>
-          <h3 data-i18n="aboutPanelTitle">
-            Կամավորությունը պարզապես մասնակցություն չէ։ Այն դիրքորոշում է։
-          </h3>
-          <p data-i18n="aboutPanelText">
-            Դիրքորոշում՝ լինել նախաձեռնող, պատասխանատու և պատրաստ օգտակար
-            լինելու այնտեղ, որտեղ քո մասնակցությունը կարող է նշանակություն ունենալ։
-          </p>
-        </div>
-
-        <div class="about-text">
-          <span class="eyebrow" data-i18n="aboutEyebrow">ՄԵՐ ՄԱՍԻՆ</span>
-          <h2 data-i18n="aboutTitle">
-            Մենք հավատում ենք մարդկանց ներուժին։
-          </h2>
-
-          <p data-i18n="aboutP1">
-            <strong>Good Way Volunteering Organization</strong>-ը կամավորական
-            կազմակերպություն է, որի գաղափարական հիմքում մարդն է՝ իր ներուժով,
-            նախաձեռնություններով և հասարակության կյանքում դրական դեր ունենալու
-            ցանկությամբ։ Մենք հավատում ենք, որ յուրաքանչյուր մարդ կարող է
-            ազդեցություն ունենալ, երբ ունի սովորելու, փորձ ձեռք բերելու և
-            գործելու հնարավորություն։
-          </p>
-
-          <p data-i18n="aboutP2">
-            Մեր նպատակը միայն կամավորների ներգրավումը չէ։ Մենք ձգտում ենք
-            ձևավորել միջավայր, որտեղ մարդիկ բացահայտում են իրենց ուժեղ կողմերը,
-            զարգացնում հաղորդակցման և թիմային աշխատանքի հմտությունները,
-            սովորում պատասխանատվություն կրել և գաղափարները վերածել գործնական
-            արդյունքների։ Յուրաքանչյուր ծրագիր կարող է դառնալ նոր գիտելիքի,
-            նոր ծանոթությունների և անձնական աճի հնարավորություն։
-          </p>
-
-          <p data-i18n="aboutP3">
-            Good Way-ի գործունեության կարևոր ուղղություններից են կամավորական
-            ծրագրերը, կրթական հանդիպումները, սեմինարները և միջոցառումների
-            կազմակերպմանն ու իրականացմանն աջակցելը։ Մենք կարևորում ենք
-            համագործակցությունը, կարգապահությունը, փոխադարձ հարգանքը և այն
-            գիտակցումը, որ թիմի յուրաքանչյուր անդամի ներդրումը նշանակություն ունի։
-          </p>
-
-          <p data-i18n="aboutP4">
-            Մեզ համար կամավորությունը միաժամանակ և՛ ծառայություն է, և՛
-            սովորելու ճանապարհ։ Այն հնարավորություն է տալիս դուրս գալ
-            հարմարավետության գոտուց, փորձել նոր դերեր, սովորել մասնագետներից,
-            հանդիպել տարբեր մտածողություն ունեցող մարդկանց և սեփական փորձով
-            հասկանալ, թե ինչ է նշանակում աշխատել ընդհանուր նպատակի համար։
-          </p>
-
-          <p data-i18n="aboutP5">
-            Մենք ձգտում ենք զարգացնել պատասխանատու, նախաձեռնող և գիտակից
-            երիտասարդների համայնք, որտեղ գաղափարները լսելի են, ջանքերը՝
-            գնահատված, իսկ սովորելու ցանկությունը՝ խրախուսված։ Մեզ համար
-            կարևոր է ոչ միայն այն, թե ինչ միջոցառում ենք իրականացնում այսօր,
-            այլ նաև այն, թե ինչ փորձ, արժեք և հիշողություն է մարդը տանում
-            իր հետ այդ փորձառությունից հետո։
-          </p>
-
-          <p data-i18n="aboutP6">
-            Good Way-ը հրավեր է՝ չսահմանափակվել դիտորդի դերով։ Եթե ցանկանում
-            ես փորձել քեզ նոր միջավայրում, օգտակար լինել, զարգացնել
-            կարողություններդ և դառնալ մի թիմի մաս, որը հավատում է գործին,
-            ապա քո ճանապարհը կարող է սկսվել այստեղից։ Մենք միասին սովորում ենք,
-            միասին գործում և քայլ առ քայլ ստեղծում նոր հնարավորություններ։
-          </p>
-
-          <div class="about-points">
-            <div class="about-point">
-              <strong data-i18n="aboutPoint1Title">Փորձառություն</strong>
-              <p data-i18n="aboutPoint1Text">
-                Իրական ծրագրերին ու միջոցառումներին մասնակցելու հնարավորություն։
-              </p>
-            </div>
-            <div class="about-point">
-              <strong data-i18n="aboutPoint2Title">Հմտություններ</strong>
-              <p data-i18n="aboutPoint2Text">
-                Թիմային աշխատանք, հաղորդակցություն և պատասխանատվություն։
-              </p>
-            </div>
-            <div class="about-point">
-              <strong data-i18n="aboutPoint3Title">Համայնք</strong>
-              <p data-i18n="aboutPoint3Text">
-                Նոր ծանոթություններ և համագործակցության հնարավորություններ։
-              </p>
-            </div>
-            <div class="about-point">
-              <strong data-i18n="aboutPoint4Title">Ազդեցություն</strong>
-              <p data-i18n="aboutPoint4Text">
-                Ներդրում նախաձեռնությունների և հասարակական կյանքի մեջ։
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROGRAMS -->
-    <section class="section programs" id="programs">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow" data-i18n="programsEyebrow">ՄԵՐ ԳՈՐԾՈՒՆԵՈՒԹՅՈՒՆԸ</span>
-          <h2 data-i18n="programsTitle">Հնարավորություններ՝ սովորելու և գործելու համար</h2>
-          <p data-i18n="programsDescription">
-            Բացահայտիր մեր հիմնական ուղղությունները և ընտրիր այն ճանապարհը,
-            որով կարող ես զարգանալ ու ներդրում ունենալ։
-          </p>
-        </div>
-
-        <div class="program-grid">
-          <article class="program-card">
-            <div class="program-number">01 / VOLUNTEERING</div>
-            <h3 data-i18n="program1Title">Կամավորական ծրագրեր</h3>
-            <p data-i18n="program1Text">
-              Մասնակցիր տարբեր նախաձեռնությունների և միջոցառումների,
-              աշխատիր թիմում, ձեռք բեր նոր փորձ և քո ներդրումն ունեցիր
-              ծրագրերի հաջող իրականացման գործում։
-            </p>
-            <a href="#join" class="text-link" data-i18n="programLink">
-              Դիմել մասնակցության համար →
-            </a>
-          </article>
-
-          <article class="program-card">
-            <div class="program-number">02 / EDUCATION</div>
-            <h3 data-i18n="program2Title">Սեմինարներ և կրթական հանդիպումներ</h3>
-            <p data-i18n="program2Text">
-              Մասնակցիր գիտելիքի փոխանակման հանդիպումների, սովորիր
-              նոր թեմաներ, զարգացրու գործնական հմտություններդ և բացահայտիր
-              քո կարողությունների նոր կողմերը։
-            </p>
-            <a href="#join" class="text-link" data-i18n="programLink">
-              Դիմել մասնակցության համար →
-            </a>
-          </article>
-
-          <article class="program-card">
-            <div class="program-number">03 / EVENTS</div>
-            <h3 data-i18n="program3Title">Միջոցառումներ և նախաձեռնություններ</h3>
-            <p data-i18n="program3Text">
-              Ներգրավվիր միջոցառումների կազմակերպման և իրականացման
-              աշխատանքներում՝ զարգացնելով կազմակերպչական հմտությունները,
-              ուշադրությունը և թիմային համագործակցությունը։
-            </p>
-            <a href="#join" class="text-link" data-i18n="programLink">
-              Դիմել մասնակցության համար →
-            </a>
-          </article>
-
-          <article class="program-card">
-            <div class="program-number">04 / PERSONAL GROWTH</div>
-            <h3 data-i18n="program4Title">Անձնական և մասնագիտական զարգացում</h3>
-            <p data-i18n="program4Text">
-              Նոր առաջադրանքների, համագործակցության և փորձի փոխանակման
-              միջոցով բացահայտիր ուժեղ կողմերդ, սովորիր պատասխանատվություն
-              ստանձնել և ավելի վստահ գործել։
-            </p>
-            <a href="#join" class="text-link" data-i18n="programLink">
-              Դիմել մասնակցության համար →
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="section" id="gallery">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow" data-i18n="galleryEyebrow">ՄԵՐ ԱՇԽԱՏԱՆՔԸ</span>
-          <h2 data-i18n="galleryTitle">Միջոցառումներ, մարդիկ և հիշողություններ</h2>
-          <p data-i18n="galleryDescription">
-            Յուրաքանչյուր միջոցառում նոր փորձ է, յուրաքանչյուր թիմային օր՝
-            համագործակցության նոր պատմություն։
-          </p>
-        </div>
-
-        <div class="gallery-grid">
-          <a class="gallery-card"
-             href="https://www.instagram.com/good_way_volunteering?exln=MXduNm1hZGljNzZnOQ%3D%3D&utm_source=qr"
-             target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1000&q=85"
-              alt="Մարդիկ՝ միասին միջոցառման ընթացքում"
-              loading="lazy">
-            <span class="gallery-caption" data-i18n="gallery1">
-              Մարդիկ, որոնք միավորվում են գաղափարի շուրջ
-            </span>
-          </a>
-
-          <a class="gallery-card"
-             href="https://www.instagram.com/good_way_volunteering?exln=MXduNm1hZGljNzZnOQ%3D%3D&utm_source=qr"
-             target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=700&q=85"
-              alt="Երիտասարդների թիմային հանդիպում"
-              loading="lazy">
-            <span class="gallery-caption" data-i18n="gallery2">
-              Թիմային աշխատանք
-            </span>
-          </a>
-
-          <a class="gallery-card"
-             href="https://www.instagram.com/good_way_volunteering?exln=MXduNm1hZGljNzZnOQ%3D%3D&utm_source=qr"
-             target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=700&q=85"
-              alt="Կրթական հանդիպում"
-              loading="lazy">
-            <span class="gallery-caption" data-i18n="gallery3">
-              Կրթություն և նոր գաղափարներ
-            </span>
-          </a>
-
-          <a class="gallery-card"
-             href="https://www.instagram.com/good_way_volunteering?exln=MXduNm1hZGljNzZnOQ%3D%3D&utm_source=qr"
-             target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://images.unsplash.com/photo-1559223607-a43c990c692c?auto=format&fit=crop&w=700&q=85"
-              alt="Համատեղ միջոցառում"
-              loading="lazy">
-            <span class="gallery-caption" data-i18n="gallery4">
-              Միջոցառումներ և նախաձեռնություններ
-            </span>
-          </a>
-
-          <a class="gallery-card"
-             href="https://www.instagram.com/good_way_volunteering?exln=MXduNm1hZGljNzZnOQ%3D%3D&utm_source=qr"
-             target="_blank" rel="noopener noreferrer">
-            <img
-              src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=700&q=85"
-              alt="Ընկերական և թիմային միջավայր"
-              loading="lazy">
-            <span class="gallery-caption" data-i18n="gallery5">
-              Միասին ստեղծված հիշողություններ
-            </span>
-          </a>
-        </div>
-
-        <p class="gallery-note" data-i18n="galleryNote">
-          Ներկայացված լուսանկարները ժամանակավոր պատկերներ են։ Հետագայում
-          կարող ենք դրանք փոխարինել Good Way-ի իրական միջոցառումների
-          լուսանկարներով։
-        </p>
-
-        <div style="margin-top:24px">
-          <a class="btn btn-outline"
-             href="https://www.instagram.com/good_way_volunteering?exln=MXduNm1hZGljNzZnOQ%3D%3D&utm_source=qr"
-             target="_blank" rel="noopener noreferrer"
-             data-i18n="galleryButton">
-            Դիտել Instagram-ի էջը ↗
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- JOIN / SUPABASE REGISTRATION -->
-    <section class="section join" id="join">
-      <div class="container join-grid">
-        <div>
-          <span class="eyebrow" data-i18n="joinEyebrow">ՔՈ ՃԱՆԱՊԱՐՀԸ ՍԿՍՎՈՒՄ Է ԱՅՍՏԵՂ</span>
-          <h2 data-i18n="joinTitle">Դարձի՛ր Good Way-ի մի մասը։</h2>
-          <p class="section-intro" data-i18n="joinDescription">
-            Լրացրու գրանցման հայտը։ Մեր թիմը կծանոթանա քո տվյալներին,
-            հետաքրքրություններին և ընտրած ուղղությանը։
-          </p>
-
-          <div class="join-benefits">
-            <div class="join-benefit">
-              <span>✓</span>
-              <div data-i18n="joinBenefit1">
-                Ներգրավվածություն կամավորական ծրագրերում և միջոցառումներում։
-              </div>
-            </div>
-            <div class="join-benefit">
-              <span>✓</span>
-              <div data-i18n="joinBenefit2">
-                Նոր գիտելիքներ, փորձ և թիմային աշխատանքի հմտություններ։
-              </div>
-            </div>
-            <div class="join-benefit">
-              <span>✓</span>
-              <div data-i18n="joinBenefit3">
-                Համագործակցություն և նոր հնարավորություններ։
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="form-card">
-          <h3 data-i18n="formTitle">Կամավորի գրանցում</h3>
-          <p class="form-description" data-i18n="formDescription">
-            Լրացրու բոլոր պարտադիր դաշտերը։
-          </p>
-
-          <form id="volunteerForm">
-            <div class="form-grid">
-              <div class="field full">
-                <label for="fullName" data-i18n="labelName">Անուն, ազգանուն *</label>
-                <input id="fullName" name="full_name" type="text"
-                  autocomplete="name" minlength="2" maxlength="120"
-                  required placeholder="Օրինակ՝ Անի Պետրոսյան"
-                  data-i18n-placeholder="placeholderName">
-              </div>
-
-              <div class="field">
-                <label for="email" data-i18n="labelEmail">Էլ․ փոստ *</label>
-                <input id="email" name="email" type="email"
-                  autocomplete="email" maxlength="254" required
-                  placeholder="name@example.com">
-              </div>
-
-              <div class="field">
-                <label for="phone" data-i18n="labelPhone">Հեռախոսահամար *</label>
-                <input id="phone" name="phone" type="tel"
-                  autocomplete="tel" minlength="6" maxlength="30"
-                  required placeholder="+374 XX XX XX XX">
-              </div>
-
-              <div class="field">
-                <label for="age" data-i18n="labelAge">Տարիք *</label>
-                <input id="age" name="age" type="number"
-                  min="14" max="100" required placeholder="18">
-              </div>
-
-              <div class="field">
-                <label for="program" data-i18n="labelProgram">Հետաքրքրող ուղղություն *</label>
-                <select id="program" name="program" required>
-                  <option value="" data-i18n="optionChoose">Ընտրել ուղղությունը</option>
-                  <option value="Volunteer Programs" data-i18n="optionVolunteer">
-                    Կամավորական ծրագրեր
-                  </option>
-                  <option value="Seminars" data-i18n="optionSeminars">
-                    Սեմինարներ
-                  </option>
-                  <option value="Events" data-i18n="optionEvents">
-                    Միջոցառումներ
-                  </option>
-                  <option value="Other" data-i18n="optionOther">
-                    Այլ
-                  </option>
-                </select>
-              </div>
-
-              <div class="field full">
-                <label for="motivation" data-i18n="labelMotivation">
-                  Ինչո՞ւ ես ցանկանում միանալ մեզ։ (ոչ պարտադիր)
-                </label>
-                <textarea id="motivation" name="motivation"
-                  maxlength="1500"
-                  placeholder="Պատմիր քո հետաքրքրությունների մասին..."
-                  data-i18n-placeholder="placeholderMotivation"></textarea>
-              </div>
-            </div>
-
-            <label class="consent">
-              <input id="consent" type="checkbox" required>
-              <span data-i18n="consentText">
-                Համաձայն եմ, որ իմ տրամադրած տվյալներն օգտագործվեն
-                կամավորական հայտիս մշակման և ինձ հետ կապ հաստատելու նպատակով։
-              </span>
-            </label>
-
-            <button type="submit" id="submitButton"
-              class="btn btn-primary submit-btn" data-i18n="submitButton">
-              Ուղարկել հայտը →
-            </button>
-
-            <div id="formMessage" class="form-message"
-              role="status" aria-live="polite"></div>
-
-            <p class="privacy-note" data-i18n="privacyNote">
-              Տվյալները փոխանցվում են գրանցման համակարգին՝ հայտը մշակելու համար։
-            </p>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow" data-i18n="contactEyebrow">ԿԱՊ ՄԵԶ ՀԵՏ</span>
-          <h2 data-i18n="contactTitle">Սկսե՛նք համագործակցությունը</h2>
-          <p data-i18n="contactDescription">
-            Հարցերի, համագործակցության առաջարկների կամ մեր գործունեության
-            վերաբերյալ տեղեկության համար կապ հաստատիր մեզ հետ։
-          </p>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact-card">
-            <div class="value-icon" aria-hidden="true">✉</div>
-            <h3 data-i18n="contactEmailTitle">Էլեկտրոնային փոստ</h3>
-            <p><a href="mailto:goodway.am1@gmail.com">goodway.am1@gmail.com</a></p>
-          </div>
-
-          <div class="contact-card">
-            <div class="value-icon" aria-hidden="true">☎</div>
-            <h3 data-i18n="contactPhoneTitle">Հեռախոս</h3>
-            <p><a href="tel:+37498919757">098-91-97-57</a></p>
-          </div>
-
-          <div class="contact-card">
-            <div class="value-icon" aria-hidden="true">↗</div>
-            <h3 data-i18n="contactSocialTitle">Սոցիալական հարթակներ</h3>
-            <p>
-              <a href="https://www.instagram.com/good_way_volunteering?exln=MXduNm1hZGljNzZnOQ%3D%3D&utm_source=qr"
-                 target="_blank" rel="noopener noreferrer">Instagram</a>
-              &nbsp;·&nbsp;
-              <a href="https://t.me/good_way_volunteering"
-                 target="_blank" rel="noopener noreferrer">Telegram</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
+  <section class="content-section" id="programs" style="background:var(--card)">
     <div class="container">
-      <div class="footer-main">
-        <a class="brand" href="#home">
-          <span class="brand-mark">GW</span>
-          <span class="brand-copy">
-            <strong>GOOD WAY</strong>
-            <span data-i18n="brandSubtitle">Volunteering Organization</span>
-          </span>
-        </a>
+      <div class="section-head">
+        <h2 data-i18n="programsTitle">Մեր ծրագրերը</h2>
+        <p data-i18n="programsIntro">Բացահայտիր հնարավորությունները և ընտրիր քեզ հետաքրքրող ծրագիրը։</p>
+      </div>
+      <div class="cards" id="programsList"><p class="empty">Բեռնվում է...</p></div>
+    </div>
+  </section>
 
-        <div class="footer-links">
-          <a href="#about" data-i18n="navAbout">Մեր մասին</a>
-          <a href="#programs" data-i18n="navPrograms">Ծրագրեր</a>
-          <a href="#gallery" data-i18n="navGallery">Միջոցառումներ</a>
-          <a href="#join" data-i18n="navJoin">Միացի՛ր մեզ</a>
+  <section class="content-section" id="events">
+    <div class="container">
+      <div class="section-head">
+        <h2 data-i18n="eventsTitle">Միջոցառումներ</h2>
+        <p data-i18n="eventsIntro">Մասնակցիր մեր առաջիկա նախաձեռնություններին։</p>
+      </div>
+      <div class="cards" id="eventsList"><p class="empty">Բեռնվում է...</p></div>
+    </div>
+  </section>
+
+  <section class="content-section" id="gallery" style="background:var(--card)">
+    <div class="container">
+      <div class="section-head">
+        <h2 data-i18n="galleryTitle">Պատկերասրահ</h2>
+        <p data-i18n="galleryIntro">Մեր գործունեության պահերն ու հիշողությունները։</p>
+      </div>
+      <div class="gallery-grid" id="galleryList"><p class="empty">Բեռնվում է...</p></div>
+    </div>
+  </section>
+
+  <section class="content-section" id="join">
+    <div class="container">
+      <div class="section-head">
+        <h2 data-i18n="joinTitle">Դարձիր կամավոր</h2>
+        <p data-i18n="joinIntro">Լրացրու հայտը, և մեր թիմը կկապվի քեզ հետ։</p>
+      </div>
+      <form id="volunteerForm" class="form-card">
+        <div class="field">
+          <label for="fullName" data-i18n="nameLabel">Անուն, ազգանուն *</label>
+          <input id="fullName" required maxlength="150" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email" data-i18n="emailLabel">Էլեկտրոնային հասցե *</label>
+          <input id="email" type="email" required maxlength="254" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="phone" data-i18n="phoneLabel">Հեռախոսահամար *</label>
+          <input id="phone" type="tel" required maxlength="40" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="age" data-i18n="ageLabel">Տարիք *</label>
+          <input id="age" type="number" required min="14" max="100">
+        </div>
+        <div class="field">
+          <label for="program" data-i18n="programLabel">Ո՞ր ծրագրին ես ցանկանում միանալ։ *</label>
+          <select id="program" required>
+            <option value="" data-i18n="chooseProgram">Ընտրել ծրագիրը</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="motivation" data-i18n="motivationLabel">Ինչո՞ւ ես ցանկանում միանալ։</label>
+          <textarea id="motivation" maxlength="2000"></textarea>
+        </div>
+        <button class="btn" id="submitBtn" type="submit" data-i18n="submitButton">Ուղարկել հայտը</button>
+        <div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="content-section" id="contact" style="background:var(--card)">
+    <div class="container">
+      <div class="section-head">
+        <h2 data-i18n="contactTitle">Կապ մեզ հետ</h2>
+        <p data-i18n="contactIntro">Հարցերի դեպքում կարող ես կապ հաստատել մեզ հետ։</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-list">
+          <div><strong data-i18n="emailLabel">Էլեկտրոնային հասցե</strong><br><a id="contactEmail" href="mailto:goodway.am1@gmail.com">goodway.am1@gmail.com</a></div>
+          <div><strong data-i18n="phoneLabel">Հեռախոսահամար</strong><br><a id="contactPhone" href="tel:098915757">098-91-57-57</a></div>
+          <div><strong>Instagram</strong><br><a id="instagramLink" href="https://www.instagram.com/good_way_volunteering/" target="_blank" rel="noopener">GOOD WAY Instagram</a></div>
+          <div><strong>Facebook</strong><br><a id="facebookLink" href="#" target="_blank" rel="noopener" class="hidden">Facebook</a></div>
+          <div><strong>Telegram</strong><br><a id="telegramLink" href="https://t.me/good_way_volunteering" target="_blank" rel="noopener">GOOD WAY Telegram</a></div>
+        </div>
+        <div>
+          <p id="contactExtra">Միացիր GOOD WAY համայնքին և դարձիր մեր նախաձեռնությունների մի մասը։</p>
+          <a href="#join" class="btn" data-i18n="joinButton">Միանալ թիմին</a>
         </div>
       </div>
-
-      <div class="footer-bottom">
-        <p>© <span id="currentYear"></span> GOOD WAY Volunteering Organization.</p>
-        <p data-i18n="footerText">Սովորում ենք։ Գործում ենք։ Փոփոխություն ենք ստեղծում։</p>
-      </div>
     </div>
-  </footer>
+  </section>
+</main>
 
-  <a href="#home" class="back-top" aria-label="Back to top">↑</a>
+<footer>
+  <div class="container footer-row">
+    <div>
+      <div class="brand"><span class="brand-name">GOOD WAY</span></div>
+      <p id="footerText">GOOD WAY Volunteering Organization</p>
+      <p>© <span id="year"></span> GOOD WAY</p>
+    </div>
+    <div class="footer-links">
+      <a href="#about" data-i18n="navAbout">Մեր մասին</a>
+      <a href="#programs" data-i18n="navPrograms">Ծրագրեր</a>
+      <a href="#events" data-i18n="navEvents">Միջոցառումներ</a>
+      <a href="#contact" data-i18n="navContact">Կապ</a>
+    </div>
+  </div>
+</footer>
 
-  <script>
-    /* =========================================================
-       GOOD WAY WEBSITE SETTINGS
-       ========================================================= */
+<script>
+(() => {
+  "use strict";
 
-    // Քո Supabase Project URL-ը։
-    const SUPABASE_URL = "https://hcggnmvnqefhfrasyfdd.supabase.co";
+  const SUPABASE_URL = "https://hcggnmvnqefhfrasyfdd.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_wyCGqA1H18QvyLOk6vXCcQ_UyR3i0_Z";
+  const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const $ = id => document.getElementById(id);
 
-    // Այստեղ տեղադրիր միայն Supabase-ի PUBLIC PUBLISHABLE KEY-ը։
-    // Մի՛ տեղադրիր secret key կամ service_role key։
-    const SUPABASE_PUBLISHABLE_KEY =
-      "sb_publishable_wyCGqA1H18QvyLOk6vXCcQ_UyR3i0_Z";
+  let language = "hy";
+  let settings = {};
+  let programs = [];
 
-    // Supabase-ում պետք է գոյություն ունենա volunteer_applications աղյուսակը։
-    const SUPABASE_TABLE = "volunteer_applications";
+  const translations = {
+    hy: {
+      navHome:"Գլխավոր",navAbout:"Մեր մասին",navPrograms:"Ծրագրեր",
+      navEvents:"Միջոցառումներ",navGallery:"Պատկերասրահ",navContact:"Կապ",
+      aboutTitle:"Մեր մասին",programsTitle:"Մեր ծրագրերը",
+      programsIntro:"Բացահայտիր հնարավորությունները և ընտրիր քեզ հետաքրքրող ծրագիրը։",
+      eventsTitle:"Միջոցառումներ",eventsIntro:"Մասնակցիր մեր առաջիկա նախաձեռնություններին։",
+      galleryTitle:"Պատկերասրահ",galleryIntro:"Մեր գործունեության պահերն ու հիշողությունները։",
+      joinTitle:"Դարձիր կամավոր",joinIntro:"Լրացրու հայտը, և մեր թիմը կկապվի քեզ հետ։",
+      joinButton:"Միանալ թիմին",nameLabel:"Անուն, ազգանուն *",
+      emailLabel:"Էլեկտրոնային հասցե",phoneLabel:"Հեռախոսահամար",
+      ageLabel:"Տարիք *",programLabel:"Ո՞ր ծրագրին ես ցանկանում միանալ։ *",
+      chooseProgram:"Ընտրել ծրագիրը",motivationLabel:"Ինչո՞ւ ես ցանկանում միանալ։",
+      submitButton:"Ուղարկել հայտը",contactTitle:"Կապ մեզ հետ",
+      contactIntro:"Հարցերի դեպքում կարող ես կապ հաստատել մեզ հետ։",
+      details:"Ավելին",register:"Գրանցվել",noPrograms:"Այս պահին հրապարակված ծրագրեր չկան։",
+      noEvents:"Այս պահին հրապարակված միջոցառումներ չկան։",
+      noGallery:"Պատկերասրահում նկարներ դեռ չկան։",
+      loading:"Բեռնվում է...",date:"Ամսաթիվ",location:"Վայր",
+      choose:"Ընտրել ծրագիրը",success:"Հայտդ հաջողությամբ ուղարկվեց։ Շնորհակալություն։",
+      error:"Հայտը չհաջողվեց ուղարկել։ Խնդրում ենք փորձել կրկին։",
+      required:"Խնդրում ենք լրացնել բոլոր պարտադիր դաշտերը։",
+      heroTitle:"Միասին ստեղծենք լավ փոփոխություններ",
+      heroDescription:"Միացիր մեր կամավորական թիմին, ձեռք բեր նոր փորձ և դարձիր դրական փոփոխությունների մի մասը։",
+      aboutText:"GOOD WAY-ը կամավորական կազմակերպություն է, որը միավորում է մարդկանց՝ մասնակցելու նախաձեռնությունների, միջոցառումների և համայնքային ծրագրերի։"
+    },
+    en: {
+      navHome:"Home",navAbout:"About Us",navPrograms:"Programs",
+      navEvents:"Events",navGallery:"Gallery",navContact:"Contact",
+      aboutTitle:"About Us",programsTitle:"Our Programs",
+      programsIntro:"Explore the opportunities and choose a program that interests you.",
+      eventsTitle:"Events",eventsIntro:"Take part in our upcoming initiatives.",
+      galleryTitle:"Gallery",galleryIntro:"Moments and memories from our activities.",
+      joinTitle:"Become a Volunteer",joinIntro:"Fill out the application and our team will contact you.",
+      joinButton:"Join Our Team",nameLabel:"Full Name *",
+      emailLabel:"Email Address",phoneLabel:"Phone Number",
+      ageLabel:"Age *",programLabel:"Which program would you like to join? *",
+      chooseProgram:"Choose a program",motivationLabel:"Why would you like to join?",
+      submitButton:"Submit Application",contactTitle:"Contact Us",
+      contactIntro:"If you have questions, feel free to contact us.",
+      details:"Learn More",register:"Register",noPrograms:"There are no published programs yet.",
+      noEvents:"There are no published events yet.",
+      noGallery:"There are no gallery images yet.",
+      loading:"Loading...",date:"Date",location:"Location",
+      choose:"Choose a program",success:"Your application has been submitted successfully. Thank you!",
+      error:"Your application could not be submitted. Please try again.",
+      required:"Please complete all required fields.",
+      heroTitle:"Together, Let's Create Positive Change",
+      heroDescription:"Join our volunteer team, gain new experience, and become part of positive change.",
+      aboutText:"GOOD WAY is a volunteering organization that brings people together to participate in initiatives, events, and community programs."
+    }
+  };
 
-    /* =========================================================
-       LANGUAGE TRANSLATIONS
-       ========================================================= */
+  function t(key) {
+    return translations[language][key] || translations.hy[key] || key;
+  }
 
-    const translations = {
-      hy: {
-        brandSubtitle: "Կամավորական կազմակերպություն",
-        navHome: "Գլխավոր",
-        navAbout: "Մեր մասին",
-        navPrograms: "Ծրագրեր",
-        navGallery: "Միջոցառումներ",
-        navContact: "Կապ",
-        navJoin: "Միացի՛ր մեզ",
+  function safe(value) {
+    return String(value ?? "").replace(/[&<>"']/g, ch => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[ch]));
+  }
 
-        heroEyebrow: "Կամավորություն • Կրթություն • Համայնք",
-        heroTitle: 'Փոխի՛ր աշխարհը՝ սկսելով <span>քո քայլից։</span>',
-        heroDescription: "Good Way-ը տարածք է մարդկանց համար, ովքեր ցանկանում են սովորել, զարգանալ, նոր փորձ ձեռք բերել և իրենց ժամանակն ու կարողությունները ծառայեցնել դրական փոփոխություններին։",
-        heroButton: "Դառնալ կամավոր →",
-        heroSecondary: "Բացահայտել Good Way-ը",
-        heroNote: "Յուրաքանչյուր մեծ փոփոխություն սկսվում է մեկ քայլից։",
-        artBottom: "Միասին ստեղծում ենք հնարավորություններ։",
+  function validUrl(value) {
+    if (!value) return "";
+    try {
+      const u = new URL(value);
+      return ["http:","https:"].includes(u.protocol) ? u.href : "";
+    } catch { return ""; }
+  }
 
-        value1Title: "Նախաձեռնողականություն",
-        value1Text: "Գաղափարից դեպի իրական գործողություն",
-        value2Title: "Համագործակցություն",
-        value2Text: "Ավելի ուժեղ ենք՝ աշխատելով միասին",
-        value3Title: "Շարունակական զարգացում",
-        value3Text: "Փորձ, գիտելիք և նոր հնարավորություններ",
+  function applyLink(id, url, fallback) {
+    const el = $(id);
+    const safeUrl = validUrl(url);
+    if (safeUrl) {
+      el.href = safeUrl;
+      el.classList.remove("hidden");
+    } else if (fallback) {
+      el.href = fallback;
+      el.classList.remove("hidden");
+    } else {
+      el.removeAttribute("href");
+      el.classList.add("hidden");
+    }
+  }
 
-        aboutEyebrow: "ՄԵՐ ՄԱՍԻՆ",
-        aboutTitle: "Մենք հավատում ենք մարդկանց ներուժին։",
-        aboutPanelTitle: "Կամավորությունը պարզապես մասնակցություն չէ։ Այն դիրքորոշում է։",
-        aboutPanelText: "Դիրքորոշում՝ լինել նախաձեռնող, պատասխանատու և պատրաստ օգտակար լինելու այնտեղ, որտեղ քո մասնակցությունը կարող է նշանակություն ունենալ։",
-        aboutP1: "<strong>Good Way Volunteering Organization</strong>-ը կամավորական կազմակերպություն է, որի գաղափարական հիմքում մարդն է՝ իր ներուժով, նախաձեռնություններով և հասարակության կյանքում դրական դեր ունենալու ցանկությամբ։ Մենք հավատում ենք, որ յուրաքանչյուր մարդ կարող է ազդեցություն ունենալ, երբ ունի սովորելու, փորձ ձեռք բերելու և գործելու հնարավորություն։",
-        aboutP2: "Մեր նպատակը միայն կամավորների ներգրավումը չէ։ Մենք ձգտում ենք ձևավորել միջավայր, որտեղ մարդիկ բացահայտում են իրենց ուժեղ կողմերը, զարգացնում հաղորդակցման և թիմային աշխատանքի հմտությունները, սովորում պատասխանատվություն կրել և գաղափարները վերածել գործնական արդյունքների։ Յուրաքանչյուր ծրագիր կարող է դառնալ նոր գիտելիքի, նոր ծանոթությունների և անձնական աճի հնարավորություն։",
-        aboutP3: "Good Way-ի գործունեության կարևոր ուղղություններից են կամավորական ծրագրերը, կրթական հանդիպումները, սեմինարները և միջոցառումների կազմակերպմանն ու իրականացմանն աջակցելը։ Մենք կարևորում ենք համագործակցությունը, կարգապահությունը, փոխադարձ հարգանքը և այն գիտակցումը, որ թիմի յուրաքանչյուր անդամի ներդրումը նշանակություն ունի։",
-        aboutP4: "Մեզ համար կամավորությունը միաժամանակ և՛ ծառայություն է, և՛ սովորելու ճանապարհ։ Այն հնարավորություն է տալիս դուրս գալ հարմարավետության գոտուց, փորձել նոր դերեր, սովորել մասնագետներից, հանդիպել տարբեր մտածողություն ունեցող մարդկանց և սեփական փորձով հասկանալ, թե ինչ է նշանակում աշխատել ընդհանուր նպատակի համար։",
-        aboutP5: "Մենք ձգտում ենք զարգացնել պատասխանատու, նախաձեռնող և գիտակից երիտասարդների համայնք, որտեղ գաղափարները լսելի են, ջանքերը՝ գնահատված, իսկ սովորելու ցանկությունը՝ խրախուսված։ Մեզ համար կարևոր է ոչ միայն այն, թե ինչ միջոցառում ենք իրականացնում այսօր, այլ նաև այն, թե ինչ փորձ, արժեք և հիշողություն է մարդը տանում իր հետ այդ փորձառությունից հետո։",
-        aboutP6: "Good Way-ը հրավեր է՝ չսահմանափակվել դիտորդի դերով։ Եթե ցանկանում ես փորձել քեզ նոր միջավայրում, օգտակար լինել, զարգացնել կարողություններդ և դառնալ մի թիմի մաս, որը հավատում է գործին, ապա քո ճանապարհը կարող է սկսվել այստեղից։ Մենք միասին սովորում ենք, միասին գործում և քայլ առ քայլ ստեղծում նոր հնարավորություններ։",
+  function applySettings(data) {
+    settings = data || {};
 
-        aboutPoint1Title: "Փորձառություն",
-        aboutPoint1Text: "Իրական ծրագրերին ու միջոցառումներին մասնակցելու հնարավորություն։",
-        aboutPoint2Title: "Հմտություններ",
-        aboutPoint2Text: "Թիմային աշխատանք, հաղորդակցություն և պատասխանատվություն։",
-        aboutPoint3Title: "Համայնք",
-        aboutPoint3Text: "Նոր ծանոթություններ և համագործակցության հնարավորություններ։",
-        aboutPoint4Title: "Ազդեցություն",
-        aboutPoint4Text: "Ներդրում նախաձեռնությունների և հասարակական կյանքի մեջ։",
+    const siteTitle = settings.site_title || "GOOD WAY — Volunteering Organization";
+    document.title = siteTitle;
+    $("brandName").textContent = settings.site_title || "GOOD WAY";
 
-        programsEyebrow: "ՄԵՐ ԳՈՐԾՈՒՆԵՈՒԹՅՈՒՆԸ",
-        programsTitle: "Հնարավորություններ՝ սովորելու և գործելու համար",
-        programsDescription: "Բացահայտիր մեր հիմնական ուղղությունները և ընտրիր այն ճանապարհը, որով կարող ես զարգանալ ու ներդրում ունենալ։",
-        program1Title: "Կամավորական ծրագրեր",
-        program1Text: "Մասնակցիր տարբեր նախաձեռնությունների և միջոցառումների, աշխատիր թիմում, ձեռք բեր նոր փորձ և քո ներդրումն ունեցիր ծրագրերի հաջող իրականացման գործում։",
-        program2Title: "Սեմինարներ և կրթական հանդիպումներ",
-        program2Text: "Մասնակցիր գիտելիքի փոխանակման հանդիպումների, սովորիր նոր թեմաներ, զարգացրու գործնական հմտություններդ և բացահայտիր քո կարողությունների նոր կողմերը։",
-        program3Title: "Միջոցառումներ և նախաձեռնություններ",
-        program3Text: "Ներգրավվիր միջոցառումների կազմակերպման և իրականացման աշխատանքներում՝ զարգացնելով կազմակերպչական հմտությունները, ուշադրությունը և թիմային համագործակցությունը։",
-        program4Title: "Անձնական և մասնագիտական զարգացում",
-        program4Text: "Նոր առաջադրանքների, համագործակցության և փորձի փոխանակման միջոցով բացահայտիր ուժեղ կողմերդ, սովորիր պատասխանատվություն ստանձնել և ավելի վստահ գործել։",
-        programLink: "Դիմել մասնակցության համար →",
-
-        galleryEyebrow: "ՄԵՐ ԱՇԽԱՏԱՆՔԸ",
-        galleryTitle: "Միջոցառումներ, մարդիկ և հիշողություններ",
-        galleryDescription: "Յուրաքանչյուր միջոցառում նոր փորձ է, յուրաքանչյուր թիմային օր՝ համագործակցության նոր պատմություն։",
-        gallery1: "Մարդիկ, որոնք միավորվում են գաղափարի շուրջ",
-        gallery2: "Թիմային աշխատանք",
-        gallery3: "Կրթություն և նոր գաղափարներ",
-        gallery4: "Միջոցառումներ և նախաձեռնություններ",
-        gallery5: "Միասին ստեղծված հիշողություններ",
-        galleryNote: "Ներկայացված լուսանկարները ժամանակավոր պատկերներ են։ Հետագայում կարող ենք դրանք փոխարինել Good Way-ի իրական միջոցառումների լուսանկարներով։",
-        galleryButton: "Դիտել Instagram-ի էջը ↗",
-
-        joinEyebrow: "ՔՈ ՃԱՆԱՊԱՐՀԸ ՍԿՍՎՈՒՄ Է ԱՅՍՏԵՂ",
-        joinTitle: "Դարձի՛ր Good Way-ի մի մասը։",
-        joinDescription: "Լրացրու գրանցման հայտը։ Մեր թիմը կծանոթանա քո տվյալներին, հետաքրքրություններին և ընտրած ուղղությանը։",
-        joinBenefit1: "Ներգրավվածություն կամավորական ծրագրերում և միջոցառումներում։",
-        joinBenefit2: "Նոր գիտելիքներ, փորձ և թիմային աշխատանքի հմտություններ։",
-        joinBenefit3: "Համագործակցություն և նոր հնարավորություններ։",
-
-        formTitle: "Կամավորի գրանցում",
-        formDescription: "Լրացրու բոլոր պարտադիր դաշտերը։",
-        labelName: "Անուն, ազգանուն *",
-        labelEmail: "Էլ․ փոստ *",
-        labelPhone: "Հեռախոսահամար *",
-        labelAge: "Տարիք *",
-        labelProgram: "Հետաքրքրող ուղղություն *",
-        labelMotivation: "Ինչո՞ւ ես ցանկանում միանալ մեզ։ (ոչ պարտադիր)",
-        placeholderName: "Օրինակ՝ Անի Պետրոսյան",
-        placeholderMotivation: "Պատմիր քո հետաքրքրությունների մասին...",
-        optionChoose: "Ընտրել ուղղությունը",
-        optionVolunteer: "Կամավորական ծրագրեր",
-        optionSeminars: "Սեմինարներ",
-        optionEvents: "Միջոցառումներ",
-        optionOther: "Այլ",
-        consentText: "Համաձայն եմ, որ իմ տրամադրած տվյալներն օգտագործվեն կամավորական հայտիս մշակման և ինձ հետ կապ հաստատելու նպատակով։",
-        submitButton: "Ուղարկել հայտը →",
-        privacyNote: "Տվյալները փոխանցվում են գրանցման համակարգին՝ հայտը մշակելու համար.",
-
-        contactEyebrow: "ԿԱՊ ՄԵԶ ՀԵՏ",
-        contactTitle: "Սկսե՛նք համագործակցությունը",
-        contactDescription: "Հարցերի, համագործակցության առաջարկների կամ մեր գործունեության վերաբերյալ տեղեկության համար կապ հաստատիր մեզ հետ։",
-        contactEmailTitle: "Էլեկտրոնային փոստ",
-        contactPhoneTitle: "Հեռախոս",
-        contactSocialTitle: "Սոցիալական հարթակներ",
-        footerText: "Սովորում ենք։ Գործում ենք։ Փոփոխություն ենք ստեղծում։",
-
-        sending: "Ուղարկվում է...",
-        success: "Շնորհակալություն։ Քո հայտը հաջողությամբ ուղարկվել է։",
-        configError: "Գրանցման համակարգի բանալին դեռ տեղադրված չէ։ Խնդրում ենք փորձել ավելի ուշ։",
-        connectionError: "Չհաջողվեց ուղարկել հայտը։ Ստուգիր ինտերնետ կապը և փորձիր կրկին։",
-        serverError: "Հայտը չհաջողվեց պահպանել։ Ստուգիր Supabase-ի կարգավորումները։",
-        invalidAge: "Խնդրում ենք մուտքագրել 14-ից 100 միջակայքում տարիք։",
-        footerFallback: "Սովորում ենք։ Գործում ենք։ Փոփոխություն ենք ստեղծում։"
-      },
-
-      en: {
-        brandSubtitle: "Volunteering Organization",
-        navHome: "Home",
-        navAbout: "About",
-        navPrograms: "Programs",
-        navGallery: "Events",
-        navContact: "Contact",
-        navJoin: "Join Us",
-
-        heroEyebrow: "Volunteering • Education • Community",
-        heroTitle: 'Change the world, starting with <span>your step.</span>',
-        heroDescription: "Good Way is a space for people who want to learn, grow, gain experience, and use their time and abilities to create positive change.",
-        heroButton: "Become a Volunteer →",
-        heroSecondary: "Discover Good Way",
-        heroNote: "Every great change starts with one step.",
-        artBottom: "Creating opportunities together.",
-
-        value1Title: "Initiative",
-        value1Text: "From ideas to meaningful action",
-        value2Title: "Collaboration",
-        value2Text: "Stronger when we work together",
-        value3Title: "Continuous Growth",
-        value3Text: "Experience, knowledge, and opportunity",
-
-        aboutEyebrow: "ABOUT US",
-        aboutTitle: "We believe in people's potential.",
-        aboutPanelTitle: "Volunteering is more than participation. It is a mindset.",
-        aboutPanelText: "A mindset of initiative, responsibility, and readiness to help wherever your contribution can make a difference.",
-        aboutP1: "<strong>Good Way Volunteering Organization</strong> is a volunteer organization built around people, their potential, their initiatives, and their desire to make a positive contribution to society. We believe everyone can make an impact when given the opportunity to learn, gain experience, and take action.",
-        aboutP2: "Our goal is not simply to recruit volunteers. We strive to create an environment where people discover their strengths, develop communication and teamwork skills, learn to take responsibility, and turn ideas into practical results. Every program can become an opportunity for new knowledge, connections, and personal growth.",
-        aboutP3: "Our key areas include volunteer programs, educational meetings, seminars, and supporting the organization and delivery of events. We value collaboration, discipline, mutual respect, and the understanding that every team member's contribution matters.",
-        aboutP4: "For us, volunteering is both service and a path to learning. It offers a chance to step outside one's comfort zone, try new roles, learn from professionals, meet people with different perspectives, and experience what it means to work toward a shared goal.",
-        aboutP5: "We aim to develop a community of responsible, proactive, and thoughtful young people where ideas are heard, efforts are valued, and curiosity is encouraged. What matters to us is not only the event we deliver today, but also the experience, values, and memories people take away.",
-        aboutP6: "Good Way is an invitation to be more than a spectator. If you want to challenge yourself in a new environment, contribute, develop your abilities, and join a team that believes in action, your journey can start here. We learn together, act together, and create new opportunities one step at a time.",
-
-        aboutPoint1Title: "Experience",
-        aboutPoint1Text: "Opportunities to participate in real programs and events.",
-        aboutPoint2Title: "Skills",
-        aboutPoint2Text: "Teamwork, communication, and responsibility.",
-        aboutPoint3Title: "Community",
-        aboutPoint3Text: "New connections and collaboration opportunities.",
-        aboutPoint4Title: "Impact",
-        aboutPoint4Text: "Contributing to initiatives and community life.",
-
-        programsEyebrow: "WHAT WE DO",
-        programsTitle: "Opportunities to learn and take action",
-        programsDescription: "Explore our main areas and choose a path where you can grow and contribute.",
-        program1Title: "Volunteer Programs",
-        program1Text: "Take part in initiatives and events, work as a team, gain new experience, and contribute to successful program delivery.",
-        program2Title: "Seminars and Educational Meetings",
-        program2Text: "Join knowledge-sharing sessions, explore new topics, develop practical skills, and discover new sides of your abilities.",
-        program3Title: "Events and Initiatives",
-        program3Text: "Support event planning and delivery while developing organizational skills, attention to detail, and teamwork.",
-        program4Title: "Personal and Professional Growth",
-        program4Text: "Discover your strengths through new tasks, collaboration, and shared experience. Learn to take responsibility and act with confidence.",
-        programLink: "Apply to participate →",
-
-        galleryEyebrow: "OUR WORK",
-        galleryTitle: "Events, people, and memories",
-        galleryDescription: "Every event is a new experience, and every team day is another story of collaboration.",
-        gallery1: "People united around an idea",
-        gallery2: "Teamwork",
-        gallery3: "Education and new ideas",
-        gallery4: "Events and initiatives",
-        gallery5: "Memories made together",
-        galleryNote: "These are temporary stock images. They can later be replaced with photographs from actual Good Way events.",
-        galleryButton: "Visit our Instagram ↗",
-
-        joinEyebrow: "YOUR JOURNEY STARTS HERE",
-        joinTitle: "Become part of Good Way.",
-        joinDescription: "Complete the application form. Our team will review your details, interests, and selected area.",
-        joinBenefit1: "Get involved in volunteer programs and events.",
-        joinBenefit2: "Build knowledge, experience, and teamwork skills.",
-        joinBenefit3: "Discover collaboration and new opportunities.",
-
-        formTitle: "Volunteer Registration",
-        formDescription: "Complete all required fields.",
-        labelName: "Full name *",
-        labelEmail: "Email address *",
-        labelPhone: "Phone number *",
-        labelAge: "Age *",
-        labelProgram: "Area of interest *",
-        labelMotivation: "Why would you like to join us? (optional)",
-        placeholderName: "For example, Anna Petrosyan",
-        placeholderMotivation: "Tell us about your interests...",
-        optionChoose: "Choose an area",
-        optionVolunteer: "Volunteer Programs",
-        optionSeminars: "Seminars",
-        optionEvents: "Events",
-        optionOther: "Other",
-        consentText: "I agree that my submitted data may be used to process my volunteer application and contact me.",
-        submitButton: "Submit Application →",
-        privacyNote: "Your information is sent to the registration system for application processing.",
-
-        contactEyebrow: "CONTACT US",
-        contactTitle: "Let's start a conversation",
-        contactDescription: "Contact us with questions, collaboration proposals, or requests for information about our work.",
-        contactEmailTitle: "Email",
-        contactPhoneTitle: "Phone",
-        contactSocialTitle: "Social Media",
-        footerText: "Learn. Act. Create change.",
-
-        sending: "Submitting...",
-        success: "Thank you! Your application has been submitted successfully.",
-        configError: "The registration system key has not been configured yet. Please try again later.",
-        connectionError: "The application could not be sent. Check your internet connection and try again.",
-        serverError: "The application could not be saved. Please check your Supabase settings.",
-        invalidAge: "Please enter an age between 14 and 100.",
-        footerFallback: "Learn. Act. Create change."
-      }
-    };
-
-    let currentLanguage = "hy";
-
-    function setLanguage(language) {
-      currentLanguage = language;
-      document.documentElement.lang = language;
-
-      document.querySelectorAll("[data-i18n]").forEach((element) => {
-        const key = element.getAttribute("data-i18n");
-        const value = translations[language][key];
-
-        if (typeof value === "string") {
-          // Only authored translation strings are inserted as HTML;
-          // form input values are never interpreted as HTML.
-          element.innerHTML = value;
-        }
-      });
-
-      document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
-        const key = element.getAttribute("data-i18n-placeholder");
-        const value = translations[language][key];
-        if (typeof value === "string") {
-          element.placeholder = value;
-        }
-      });
-
-      document.getElementById("languageToggle").textContent =
-        language === "hy" ? "EN" : "ՀԱՅ";
-
-      document.title = language === "hy"
-        ? "GOOD WAY | Կամավորական կազմակերպություն"
-        : "GOOD WAY | Volunteering Organization";
+    const logoUrl = validUrl(settings.logo_url);
+    if (logoUrl) {
+      $("logo").src = logoUrl;
+      $("logo").classList.remove("hidden");
+    } else {
+      $("logo").classList.add("hidden");
     }
 
-    document.getElementById("languageToggle").addEventListener("click", () => {
-      setLanguage(currentLanguage === "hy" ? "en" : "hy");
+    $("heroTitle").textContent = settings.hero_title || t("heroTitle");
+    $("heroDescription").textContent = settings.hero_description || t("heroDescription");
+    $("aboutText").textContent = settings.about_text || t("aboutText");
+    $("footerText").textContent = settings.footer_text || "GOOD WAY Volunteering Organization";
+    $("contactExtra").textContent = settings.about_text || t("aboutText");
+
+    const heroImage = validUrl(settings.hero_image_url);
+    document.querySelector(".hero").style.backgroundImage = heroImage
+      ? `url("${heroImage.replace(/"/g, "%22")}")`
+      : "none";
+
+    const primary = /^#[0-9a-f]{6}$/i.test(settings.primary_color || "")
+      ? settings.primary_color : "#171717";
+    const secondary = /^#[0-9a-f]{6}$/i.test(settings.secondary_color || "")
+      ? settings.secondary_color : "#333333";
+    document.documentElement.style.setProperty("--primary", primary);
+    document.documentElement.style.setProperty("--secondary", secondary);
+
+    const email = settings.contact_email || "goodway.am1@gmail.com";
+    $("contactEmail").textContent = email;
+    $("contactEmail").href = "mailto:" + email;
+
+    const phone = settings.contact_phone || "098-91-57-57";
+    $("contactPhone").textContent = phone;
+    $("contactPhone").href = "tel:" + phone.replace(/[^\d+]/g, "");
+
+    applyLink("instagramLink", settings.instagram_url,
+      "https://www.instagram.com/good_way_volunteering/");
+    applyLink("facebookLink", settings.facebook_url, "");
+    applyLink("telegramLink", settings.telegram_url,
+      "https://t.me/good_way_volunteering");
+
+    if (heroImage) {
+      $("aboutImage").src = heroImage;
+      $("aboutImage").classList.remove("hidden");
+    } else {
+      $("aboutImage").classList.add("hidden");
+    }
+  }
+
+  function updateLanguage() {
+    document.documentElement.lang = language;
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.dataset.i18n;
+      if (translations[language][key]) el.textContent = translations[language][key];
     });
+    $("langBtn").textContent = language === "hy" ? "EN" : "HY";
+    $("heroTitle").textContent = settings.hero_title || t("heroTitle");
+    $("heroDescription").textContent = settings.hero_description || t("heroDescription");
+    $("aboutText").textContent = settings.about_text || t("aboutText");
+    renderPrograms();
+    renderEvents(window.currentEvents || []);
+    renderGallery(window.currentGallery || []);
+    fillProgramSelect();
+  }
 
-    /* =========================================================
-       MOBILE MENU
-       ========================================================= */
+  $("langBtn").addEventListener("click", () => {
+    language = language === "hy" ? "en" : "hy";
+    updateLanguage();
+  });
 
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
+  $("menuBtn").addEventListener("click", () => $("mainNav").classList.toggle("open"));
+  document.querySelectorAll("#mainNav a").forEach(a => a.addEventListener("click", () => {
+    $("mainNav").classList.remove("open");
+  }));
 
-    menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.textContent = isOpen ? "✕" : "☰";
-    });
+  function renderPrograms() {
+    const list = $("programsList");
+    if (!programs.length) {
+      list.innerHTML = `<p class="empty">${safe(t("noPrograms"))}</p>`;
+      return;
+    }
+    list.innerHTML = programs.map(p => {
+      const image = validUrl(p.image_url);
+      const link = validUrl(p.registration_url);
+      return `<article class="card">
+        ${image ? `<img src="${safe(image)}" alt="${safe(p.title)}" loading="lazy">` : ""}
+        <div class="card-body">
+          <h3>${safe(p.title)}</h3>
+          <p>${safe(p.description || "")}</p>
+          ${link ? `<a class="btn" href="${safe(link)}" target="_blank" rel="noopener">${safe(t("register"))}</a>` : ""}
+        </div>
+      </article>`;
+    }).join("");
+  }
 
-    navLinks.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.textContent = "☰";
-      });
-    });
+  function fillProgramSelect() {
+    const select = $("program");
+    const current = select.value;
+    select.innerHTML = `<option value="">${safe(t("chooseProgram"))}</option>` +
+      programs.map(p => `<option value="${safe(p.title)}">${safe(p.title)}</option>`).join("");
+    if (current && programs.some(p => p.title === current)) select.value = current;
+  }
 
-    /* =========================================================
-       VOLUNTEER REGISTRATION — SUPABASE REST API
-       ========================================================= */
+  function renderEvents(rows) {
+    const list = $("eventsList");
+    if (!rows.length) {
+      list.innerHTML = `<p class="empty">${safe(t("noEvents"))}</p>`;
+      return;
+    }
+    list.innerHTML = rows.map(ev => {
+      const image = validUrl(ev.image_url);
+      const link = validUrl(ev.registration_url);
+      const date = ev.event_date
+        ? new Date(ev.event_date).toLocaleString(language === "hy" ? "hy-AM" : "en-US")
+        : "";
+      return `<article class="card">
+        ${image ? `<img src="${safe(image)}" alt="${safe(ev.title)}" loading="lazy">` : ""}
+        <div class="card-body">
+          <h3>${safe(ev.title)}</h3>
+          ${date ? `<div class="event-meta">📅 ${safe(t("date"))}: ${safe(date)}</div>` : ""}
+          ${ev.location ? `<div class="event-meta">📍 ${safe(t("location"))}: ${safe(ev.location)}</div>` : ""}
+          <p>${safe(ev.description || "")}</p>
+          ${link ? `<a class="btn" href="${safe(link)}" target="_blank" rel="noopener">${safe(t("register"))}</a>` : ""}
+        </div>
+      </article>`;
+    }).join("");
+  }
 
-    const volunteerForm = document.getElementById("volunteerForm");
-    const submitButton = document.getElementById("submitButton");
-    const formMessage = document.getElementById("formMessage");
+  function renderGallery(rows) {
+    const list = $("galleryList");
+    if (!rows.length) {
+      list.innerHTML = `<p class="empty">${safe(t("noGallery"))}</p>`;
+      return;
+    }
+    list.innerHTML = rows.map(item => {
+      const image = validUrl(item.image_url);
+      if (!image) return "";
+      return `<a class="gallery-item" href="${safe(image)}" target="_blank" rel="noopener" aria-label="${safe(item.title || "Gallery image")}">
+        <img src="${safe(image)}" alt="${safe(item.title || "GOOD WAY")}" loading="lazy">
+      </a>`;
+    }).join("") || `<p class="empty">${safe(t("noGallery"))}</p>`;
+  }
 
-    function showFormMessage(type, message) {
-      formMessage.className = "form-message " + type;
-      formMessage.textContent = message;
+  async function loadSettings() {
+    const { data, error } = await db.from("site_settings")
+      .select("*").eq("id", 1).maybeSingle();
+    if (error) {
+      console.error("Settings loading error:", error.message);
+      applySettings({});
+      return;
+    }
+    applySettings(data || {});
+  }
+
+  async function loadPrograms() {
+    const { data, error } = await db.from("programs")
+      .select("*").eq("published", true).order("created_at", { ascending: false });
+    if (error) {
+      console.error("Programs loading error:", error.message);
+      $("programsList").innerHTML = `<p class="empty">${safe(t("noPrograms"))}</p>`;
+      return;
+    }
+    programs = data || [];
+    renderPrograms();
+    fillProgramSelect();
+  }
+
+  async function loadEvents() {
+    const { data, error } = await db.from("events")
+      .select("*").eq("published", true).order("event_date", { ascending: true });
+    if (error) {
+      console.error("Events loading error:", error.message);
+      window.currentEvents = [];
+      renderEvents([]);
+      return;
+    }
+    window.currentEvents = data || [];
+    renderEvents(window.currentEvents);
+  }
+
+  async function loadGallery() {
+    const { data, error } = await db.from("gallery_items")
+      .select("*").order("created_at", { ascending: false });
+    if (error) {
+      console.error("Gallery loading error:", error.message);
+      window.currentGallery = [];
+      renderGallery([]);
+      return;
+    }
+    window.currentGallery = data || [];
+    renderGallery(window.currentGallery);
+  }
+
+  $("volunteerForm").addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const message = $("formMessage");
+    const button = $("submitBtn");
+    message.className = "form-message";
+    message.textContent = "";
+
+    const fullName = $("fullName").value.trim();
+    const email = $("email").value.trim();
+    const phone = $("phone").value.trim();
+    const age = Number($("age").value);
+    const program = $("program").value;
+
+    if (!fullName || !email || !phone || !program || !Number.isInteger(age) || age < 14 || age > 100) {
+      message.classList.add("error");
+      message.textContent = t("required");
+      return;
     }
 
-    volunteerForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
+    button.disabled = true;
+    button.style.opacity = ".6";
 
-      const t = translations[currentLanguage];
-
-      if (!volunteerForm.reportValidity()) {
-        return;
-      }
-
-      const age = Number(document.getElementById("age").value);
-
-      if (!Number.isInteger(age) || age < 14 || age > 100) {
-        showFormMessage("error", t.invalidAge);
-        return;
-      }
-
-      if (
-        !SUPABASE_PUBLISHABLE_KEY ||
-        SUPABASE_PUBLISHABLE_KEY === "PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE"
-      ) {
-        showFormMessage("error", t.configError);
-        return;
-      }
-
-      const application = {
-        full_name: document.getElementById("fullName").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        phone: document.getElementById("phone").value.trim(),
-        age: age,
-        program: document.getElementById("program").value,
+    try {
+      // Keep the existing database fields and application workflow.
+      const { error } = await db.from("volunteer_applications").insert({
+        full_name: fullName,
+        email,
+        phone,
+        age,
+        program,
         status: "new"
-      };
+      });
 
-      const motivation = document.getElementById("motivation").value.trim();
+      if (error) throw error;
 
-      // The existing table may not have a motivation column.
-      // Send only the columns already expected by the database.
-      // Motivation is intentionally not included in this request.
+      message.classList.add("success");
+      message.textContent = t("success");
+      $("volunteerForm").reset();
+    } catch (error) {
+      console.error("Application submission error:", error.message);
+      message.classList.add("error");
+      message.textContent = t("error");
+    } finally {
+      button.disabled = false;
+      button.style.opacity = "1";
+    }
+  });
 
-      submitButton.disabled = true;
-      submitButton.style.opacity = "0.65";
-      submitButton.textContent = t.sending;
-      formMessage.className = "form-message";
-      formMessage.textContent = "";
+  $("year").textContent = new Date().getFullYear();
 
-      try {
-        const response = await fetch(
-          `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "apikey": SUPABASE_PUBLISHABLE_KEY,
-              "Authorization": `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
-              "Prefer": "return=minimal"
-            },
-            body: JSON.stringify(application)
-          }
-        );
+  async function init() {
+    updateLanguage();
+    await Promise.all([
+      loadSettings(),
+      loadPrograms(),
+      loadEvents(),
+      loadGallery()
+    ]);
+    updateLanguage();
+  }
 
-        if (!response.ok) {
-          let details = "";
-          try {
-            const errorData = await response.json();
-            details = errorData.message || errorData.details || "";
-          } catch (_) {
-            // Ignore an unreadable error response.
-          }
-
-          console.error("Supabase registration error:", response.status, details);
-          showFormMessage("error", t.serverError);
-          return;
-        }
-
-        showFormMessage("success", t.success);
-        volunteerForm.reset();
-
-      } catch (error) {
-        console.error("Registration network error:", error);
-        showFormMessage("error", t.connectionError);
-      } finally {
-        submitButton.disabled = false;
-        submitButton.style.opacity = "1";
-        submitButton.textContent = t.submitButton;
-      }
-    });
-
-    /* =========================================================
-       INITIALIZE
-       ========================================================= */
-
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
-
-    setLanguage("hy");
-  </script>
+  init();
+})();
+</script>
 </body>
 </html>
