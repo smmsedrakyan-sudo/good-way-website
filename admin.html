@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="hy">
 <head>
@@ -16,6 +15,8 @@ button{border:0;border-radius:9px;padding:11px 15px;background:var(--accent);col
 button.secondary{background:#fff;color:#171717;border:1px solid var(--line)}
 button.danger{background:#a52828}
 input,textarea,select{width:100%;padding:12px;border:1px solid #d8d8d8;border-radius:8px;background:white}
+input[type=checkbox]{width:auto}
+input[type=color]{height:45px;padding:4px}
 textarea{min-height:110px;resize:vertical}
 label{display:block;font-weight:600;margin-bottom:6px}
 .field{margin:15px 0}
@@ -41,6 +42,7 @@ table{width:100%;border-collapse:collapse;min-width:750px}
 th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
 .tablewrap{overflow-x:auto}
 small{color:var(--muted)}
+.preview-logo{max-width:180px;max-height:90px;object-fit:contain;margin-top:8px}
 @media(max-width:600px){.wrap{width:96%;margin:12px auto}.panel{padding:14px}.grid{grid-template-columns:1fr}.wide{grid-column:auto}}
 </style>
 </head>
@@ -74,14 +76,12 @@ small{color:var(--muted)}
     <button id="logoutBtn" class="secondary">Դուրս գալ</button>
   </header>
 
-  <div id="globalMessage" class="notice hidden"></div>
-
   <nav class="tabs">
     <button class="active" data-tab="applications">Հայտեր</button>
     <button data-tab="programs">Ծրագրեր</button>
     <button data-tab="events">Միջոցառումներ</button>
     <button data-tab="gallery">Պատկերասրահ</button>
-    <button data-tab="settings">Կայքի տվյալներ</button>
+    <button data-tab="settings">Կայքի կարգավորումներ</button>
   </nav>
 
   <section id="tab-applications" class="panel">
@@ -102,80 +102,36 @@ small{color:var(--muted)}
   </section>
 
   <section id="tab-programs" class="panel hidden">
-    <div class="top">
-      <h2>Ծրագրեր</h2><button id="newProgram">+ Ավելացնել</button>
-    </div>
+    <div class="top"><h2>Ծրագրեր</h2><button id="newProgram">+ Ավելացնել</button></div>
     <form id="programForm" class="hidden">
       <input type="hidden" id="programId">
       <div class="grid">
-        <div class="field">
-          <label for="programTitle">Ծրագրի անվանում *</label>
-          <input id="programTitle" required>
-        </div>
-        <div class="field">
-          <label for="programImage">Նկարի URL</label>
-          <input id="programImage" type="url">
-        </div>
-        <div class="field wide">
-          <label for="programDescription">Նկարագրություն</label>
-          <textarea id="programDescription"></textarea>
-        </div>
-        <div class="field">
-          <label for="programLink">Գրանցման հղում</label>
-          <input id="programLink" type="url">
-        </div>
-        <div class="field">
-          <label><input id="programPublished" type="checkbox" style="width:auto"> Հրապարակել</label>
-        </div>
+        <div class="field"><label for="programTitle">Ծրագրի անվանում *</label><input id="programTitle" required></div>
+        <div class="field"><label for="programImage">Նկարի URL</label><input id="programImage" type="url"></div>
+        <div class="field wide"><label for="programDescription">Նկարագրություն</label><textarea id="programDescription"></textarea></div>
+        <div class="field"><label for="programLink">Գրանցման հղում</label><input id="programLink" type="url"></div>
+        <div class="field"><label><input id="programPublished" type="checkbox"> Հրապարակել</label></div>
       </div>
-      <div class="actions">
-        <button>Պահպանել</button>
-        <button type="button" class="secondary" id="cancelProgram">Չեղարկել</button>
-      </div>
+      <div class="actions"><button>Պահպանել</button><button type="button" class="secondary" id="cancelProgram">Չեղարկել</button></div>
     </form>
     <div id="programsMessage" class="notice hidden"></div>
     <div id="programsList" class="list"></div>
   </section>
 
   <section id="tab-events" class="panel hidden">
-    <div class="top">
-      <h2>Միջոցառումներ</h2><button id="newEvent">+ Ավելացնել</button>
-    </div>
+    <div class="top"><h2>Միջոցառումներ</h2><button id="newEvent">+ Ավելացնել</button></div>
     <form id="eventForm" class="hidden">
       <input type="hidden" id="eventId">
       <div class="grid">
-        <div class="field">
-          <label for="eventTitle">Միջոցառման անվանում *</label>
-          <input id="eventTitle" required>
-        </div>
-        <div class="field">
-          <label for="eventDate">Ամսաթիվ և ժամ</label>
-          <input id="eventDate" type="datetime-local">
-        </div>
-        <div class="field">
-          <label for="eventLocation">Վայր</label>
-          <input id="eventLocation">
-        </div>
-        <div class="field">
-          <label for="eventImage">Նկարի URL</label>
-          <input id="eventImage" type="url">
-        </div>
-        <div class="field wide">
-          <label for="eventDescription">Նկարագրություն</label>
-          <textarea id="eventDescription"></textarea>
-        </div>
-        <div class="field">
-          <label for="eventLink">Գրանցման հղում</label>
-          <input id="eventLink" type="url">
-        </div>
-        <div class="field">
-          <label><input id="eventPublished" type="checkbox" style="width:auto"> Հրապարակել</label>
-        </div>
+        <div class="field"><label for="eventTitle">Միջոցառման անվանում *</label><input id="eventTitle" required></div>
+        <div class="field"><label for="eventDate">Ամսաթիվ և ժամ</label><input id="eventDate" type="datetime-local"></div>
+        <div class="field"><label for="eventLocation">Վայր</label><input id="eventLocation"></div>
+        <div class="field"><label for="eventImage">Նկարի URL</label><input id="eventImage" type="url"></div>
+        <div class="field wide"><label for="eventDescription">Նկարագրություն</label><textarea id="eventDescription"></textarea></div>
+        <div class="field"><label for="eventLink">Գրանցման հղում</label><input id="eventLink" type="url"></div>
+        <div class="field"><label><input id="eventPublished" type="checkbox"> Հրապարակել</label></div>
       </div>
-      <div class="actions">
-        <button>Պահպանել</button>
-        <button type="button" class="secondary" id="cancelEvent">Չեղարկել</button>
-      </div>
+      <div class="actions"><button>Պահպանել</button><button type="button" class="secondary" id="cancelEvent">Չեղարկել</button></div>
     </form>
     <div id="eventsMessage" class="notice hidden"></div>
     <div id="eventsList" class="list"></div>
@@ -184,14 +140,8 @@ small{color:var(--muted)}
   <section id="tab-gallery" class="panel hidden">
     <h2>Պատկերասրահ</h2>
     <form id="galleryForm">
-      <div class="field">
-        <label for="galleryTitle">Նկարի վերնագիր</label>
-        <input id="galleryTitle">
-      </div>
-      <div class="field">
-        <label for="galleryUrl">Նկարի URL *</label>
-        <input id="galleryUrl" type="url" required>
-      </div>
+      <div class="field"><label for="galleryTitle">Նկարի վերնագիր</label><input id="galleryTitle"></div>
+      <div class="field"><label for="galleryUrl">Նկարի URL *</label><input id="galleryUrl" type="url" required></div>
       <button>Ավելացնել նկար</button>
     </form>
     <div id="galleryMessage" class="notice hidden"></div>
@@ -199,26 +149,26 @@ small{color:var(--muted)}
   </section>
 
   <section id="tab-settings" class="panel hidden">
-    <h2>Կայքի հիմնական տվյալներ</h2>
-    <p class="muted">Այստեղ պահպանվում են տվյալները։ Հանրային կայքում դրանց ցուցադրումը կկարգավորենք հաջորդ փուլում։</p>
+    <h2>Կայքի կարգավորումներ</h2>
+    <p class="muted">Կարգավորումները պահվում են Supabase-ում։ Հանրային էջում ցուցադրելու համար պետք է դրանք միացնել նաև index.html-ում։</p>
     <form id="settingsForm">
-      <div class="field">
-        <label for="siteTitle">Գլխավոր վերնագիր</label>
-        <input id="siteTitle">
+      <div class="grid">
+        <div class="field wide"><label for="siteTitle">Կայքի վերնագիր</label><input id="siteTitle"></div>
+        <div class="field wide"><label for="heroTitle">Գլխավոր էջի մեծ վերնագիր</label><input id="heroTitle"></div>
+        <div class="field wide"><label for="heroDescription">Գլխավոր էջի նկարագրություն</label><textarea id="heroDescription"></textarea></div>
+        <div class="field wide"><label for="siteAbout">«Մեր մասին» տեքստ</label><textarea id="siteAbout"></textarea></div>
+        <div class="field wide"><label for="logoUrl">Լոգոյի URL</label><input id="logoUrl" type="url" placeholder="https://..."><img id="logoPreview" class="preview-logo hidden" alt="Լոգոյի նախադիտում"></div>
+        <div class="field wide"><label for="heroImageUrl">Գլխավոր նկարի URL</label><input id="heroImageUrl" type="url" placeholder="https://..."></div>
+        <div class="field"><label for="primaryColor">Հիմնական գույն</label><input id="primaryColor" type="color" value="#6C3BCE"></div>
+        <div class="field"><label for="secondaryColor">Երկրորդ գույն</label><input id="secondaryColor" type="color" value="#211438"></div>
+        <div class="field wide"><label for="footerText">Ստորին հատվածի տեքստ</label><textarea id="footerText"></textarea></div>
+        <div class="field"><label for="siteEmail">Էլեկտրոնային հասցե</label><input id="siteEmail" type="email"></div>
+        <div class="field"><label for="sitePhone">Հեռախոս</label><input id="sitePhone"></div>
+        <div class="field"><label for="instagramUrl">Instagram-ի հղում</label><input id="instagramUrl" type="url"></div>
+        <div class="field"><label for="facebookUrl">Facebook-ի հղում</label><input id="facebookUrl" type="url"></div>
+        <div class="field wide"><label for="telegramUrl">Telegram-ի հղում</label><input id="telegramUrl" type="url"></div>
       </div>
-      <div class="field">
-        <label for="siteAbout">Մեր մասին</label>
-        <textarea id="siteAbout"></textarea>
-      </div>
-      <div class="field">
-        <label for="siteEmail">Էլեկտրոնային հասցե</label>
-        <input id="siteEmail" type="email">
-      </div>
-      <div class="field">
-        <label for="sitePhone">Հեռախոս</label>
-        <input id="sitePhone">
-      </div>
-      <button>Պահպանել տվյալները</button>
+      <button>Պահպանել կարգավորումները</button>
     </form>
     <div id="settingsMessage" class="notice hidden"></div>
   </section>
@@ -226,226 +176,114 @@ small{color:var(--muted)}
 </main>
 
 <script>
-(() => {
-  const URL = "https://hcggnmvnqefhfrasyfdd.supabase.co";
-  const KEY = "sb_publishable_wyCGqA1H18QvyLOk6vXCcQ_UyR3i0_Z";
-  const ADMIN = "samsedrakyan15@gmail.com";
-  const db = window.supabase.createClient(URL, KEY);
-  const $ = id => document.getElementById(id);
-  const esc = v => String(v ?? "").replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[c]));
-  function notice(id,text,type=""){
-    const el=$(id);el.textContent=text;
-    el.className="notice"+(type?" "+type:"");
-    el.classList.remove("hidden");
-  }
-  function fail(id,e){
-    notice(id,e?.message||"Սխալ տեղի ունեցավ։ Ստուգիր Supabase-ի կարգավորումները։","error");
-  }
-  function hide(id){$(id).classList.add("hidden");}
-  let programs=[],events=[];
-  function showApp(user){
-    $("loginPanel").classList.add("hidden");
-    $("appPanel").classList.remove("hidden");
-    $("who").textContent=user.email||"";
-  }
-  function showLogin(){
-    $("appPanel").classList.add("hidden");
-    $("loginPanel").classList.remove("hidden");
-  }
-  async function checkAdmin(user){
-    if(!user||(user.email||"").toLowerCase()!==ADMIN){
-      await db.auth.signOut();showLogin();
-      notice("loginMessage","Այս հաշիվը ադմինիստրատորի համար թույլատրված չէ։","error");
-      return false;
-    }
-    return true;
-  }
-  $("loginForm").addEventListener("submit",async e=>{
-    e.preventDefault();$("loginBtn").disabled=true;hide("loginMessage");
-    try{
-      const {data,error}=await db.auth.signInWithPassword({
-        email:$("email").value.trim(),password:$("password").value
-      });
-      if(error)throw error;
-      if(await checkAdmin(data.user)){showApp(data.user);await loadAll();}
-    }catch(e){fail("loginMessage",e);}
-    finally{$("loginBtn").disabled=false;}
-  });
-  $("logoutBtn").addEventListener("click",async()=>{await db.auth.signOut();showLogin();});
-  db.auth.onAuthStateChange((_event,session)=>{
-    if(!session)showLogin();
-  });
-  async function start(){
-    const {data,error}=await db.auth.getSession();
-    if(!error&&data.session&&await checkAdmin(data.session.user)){
-      showApp(data.session.user);await loadAll();
-    }
-  }
-  document.querySelectorAll("[data-tab]").forEach(btn=>btn.addEventListener("click",()=>{
-    document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b===btn));
-    ["applications","programs","events","gallery","settings"].forEach(t=>{
-      $("tab-"+t).classList.toggle("hidden",t!==btn.dataset.tab);
-    });
-  }));
-  async function loadApps(){
-    try{
-      const {data,error}=await db.from("volunteer_applications").select("*").order("created_at",{ascending:false});
-      if(error)throw error;
-      $("appsBody").innerHTML=(data||[]).map(a=>`<tr>
-        <td>${esc(a.full_name)}</td><td>${esc(a.email)}</td><td>${esc(a.phone)}</td>
-        <td>${esc(a.age)}</td><td>${esc(a.program)}</td>
-        <td><select data-status="${esc(a.id)}">${["Նոր","Դիտարկվում է","Հաստատված է","Մերժված է"].map(s=>`<option ${a.status===s?"selected":""}>${s}</option>`).join("")}</select></td>
-        <td><button data-save="${esc(a.id)}">Պահպանել</button></td></tr>`).join("")||'<tr><td colspan="7">Հայտեր դեռ չկան։</td></tr>';
-      $("appsBody").querySelectorAll("[data-save]").forEach(b=>b.addEventListener("click",async()=>{
-        const id=b.dataset.save;
-        const status=$("appsBody").querySelector(`[data-status="${CSS.escape(id)}"]`).value;
-        const {error}=await db.from("volunteer_applications").update({status}).eq("id",id);
-        if(error)fail("appsMessage",error);else notice("appsMessage","Կարգավիճակը պահպանվեց։","success");
-      }));
-      hide("appsMessage");
-    }catch(e){fail("appsMessage",e);}
-  }
-  function renderRows(rows,target,kind){
-    $(target).innerHTML=rows.map(r=>`<article class="item">
-      <div class="top"><strong>${esc(r.title)}</strong><span>${r.published?"Հրապարակված է":"Սևագիր"}</span></div>
-      <p>${esc(r.description||"")}</p>
-      ${r.event_date?`<p>📅 ${esc(new Date(r.event_date).toLocaleString("hy-AM"))}</p>`:""}
-      ${r.location?`<p>📍 ${esc(r.location)}</p>`:""}
-      ${r.image_url?`<p><a href="${esc(r.image_url)}" target="_blank" rel="noopener">Դիտել նկարը</a></p>`:""}
-      <div class="actions"><button class="secondary" data-edit="${kind}:${esc(r.id)}">Խմբագրել</button><button class="danger" data-del="${kind}:${esc(r.id)}">Ջնջել</button></div>
-    </article>`).join("")||'<p class="muted">Գրառումներ դեռ չկան։</p>';
-    $(target).querySelectorAll("[data-edit]").forEach(b=>b.addEventListener("click",()=>edit(kind,b.dataset.edit.split(":")[1])));
-    $(target).querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>remove(kind,b.dataset.del.split(":")[1])));
-  }
-  async function loadRecords(kind){
-    const table=kind==="program"?"programs":"events";
-    const target=kind==="program"?"programsList":"eventsList";
-    const msg=kind==="program"?"programsMessage":"eventsMessage";
-    try{
-      const {data,error}=await db.from(table).select("*").order("created_at",{ascending:false});
-      if(error)throw error;
-      if(kind==="program")programs=data||[];else events=data||[];
-      renderRows(data||[],target,kind);hide(msg);
-    }catch(e){fail(msg,e);}
-  }
-  function clearForm(kind){
-    const ids=kind==="program"
-      ?["programId","programTitle","programImage","programDescription","programLink"]
-      :["eventId","eventTitle","eventDate","eventLocation","eventImage","eventDescription","eventLink"];
-    ids.forEach(id=>$(id).value="");
-    $(kind==="program"?"programPublished":"eventPublished").checked=false;
-    $(kind==="program"?"programForm":"eventForm").classList.remove("hidden");
-  }
-  $("newProgram").addEventListener("click",()=>clearForm("program"));
-  $("newEvent").addEventListener("click",()=>clearForm("event"));
-  $("cancelProgram").addEventListener("click",()=>$("programForm").classList.add("hidden"));
-  $("cancelEvent").addEventListener("click",()=>$("eventForm").classList.add("hidden"));
-  function edit(kind,id){
-    const r=(kind==="program"?programs:events).find(x=>String(x.id)===String(id));
-    if(!r)return;
-    if(kind==="program"){
-      $("programId").value=r.id;$("programTitle").value=r.title||"";
-      $("programImage").value=r.image_url||"";$("programDescription").value=r.description||"";
-      $("programLink").value=r.registration_url||"";$("programPublished").checked=!!r.published;
-      $("programForm").classList.remove("hidden");
-    }else{
-      $("eventId").value=r.id;$("eventTitle").value=r.title||"";
-      $("eventDate").value=r.event_date?r.event_date.slice(0,16):"";
-      $("eventLocation").value=r.location||"";$("eventImage").value=r.image_url||"";
-      $("eventDescription").value=r.description||"";$("eventLink").value=r.registration_url||"";
-      $("eventPublished").checked=!!r.published;$("eventForm").classList.remove("hidden");
-    }
-    window.scrollTo({top:0,behavior:"smooth"});
-  }
-  $("programForm").addEventListener("submit",async e=>{
-    e.preventDefault();
-    const id=$("programId").value;
-    const row={title:$("programTitle").value.trim(),image_url:$("programImage").value.trim()||null,description:$("programDescription").value.trim()||null,registration_url:$("programLink").value.trim()||null,published:$("programPublished").checked};
-    try{
-      const q=id?db.from("programs").update(row).eq("id",id):db.from("programs").insert(row);
-      const {error}=await q;if(error)throw error;
-      $("programForm").classList.add("hidden");notice("programsMessage","Ծրագիրը պահպանվեց։","success");await loadRecords("program");
-    }catch(e){fail("programsMessage",e);}
-  });
-  $("eventForm").addEventListener("submit",async e=>{
-    e.preventDefault();
-    const id=$("eventId").value;
-    const row={title:$("eventTitle").value.trim(),event_date:$("eventDate").value?new Date($("eventDate").value).toISOString():null,location:$("eventLocation").value.trim()||null,image_url:$("eventImage").value.trim()||null,description:$("eventDescription").value.trim()||null,registration_url:$("eventLink").value.trim()||null,published:$("eventPublished").checked};
-    try{
-      const q=id?db.from("events").update(row).eq("id",id):db.from("events").insert(row);
-      const {error}=await q;if(error)throw error;
-      $("eventForm").classList.add("hidden");notice("eventsMessage","Միջոցառումը պահպանվեց։","success");await loadRecords("event");
-    }catch(e){fail("eventsMessage",e);}
-  });
-  async function remove(kind,id){
-    if(!confirm("Հաստա՞տ ջնջել այս գրառումը։"))return;
-    const table=kind==="program"?"programs":"events";
-    const message=kind==="program"?"programsMessage":"eventsMessage";
-    try{
-      const {error}=await db.from(table).delete().eq("id",id);if(error)throw error;
-      notice(message,"Գրառումը ջնջվեց։","success");await loadRecords(kind);
-    }catch(e){fail(message,e);}
-  }
-  async function loadGallery(){
-    try{
-      const {data,error}=await db.from("gallery_items").select("*").order("created_at",{ascending:false});
-      if(error)throw error;
-      $("galleryList").innerHTML=(data||[]).map(r=>`<article class="item">
-        <strong>${esc(r.title||"Նկար")}</strong><p><a href="${esc(r.image_url)}" target="_blank" rel="noopener">Բացել նկարը</a></p>
-        <button class="danger" data-gallery="${esc(r.id)}">Ջնջել</button></article>`).join("")||'<p>Նկարներ դեռ չկան։</p>';
-      $("galleryList").querySelectorAll("[data-gallery]").forEach(b=>b.addEventListener("click",async()=>{
-        if(!confirm("Ջնջե՞լ նկարը։"))return;
-        const {error}=await db.from("gallery_items").delete().eq("id",b.dataset.gallery);
-        if(error)fail("galleryMessage",error);else{notice("galleryMessage","Նկարը ջնջվեց։","success");await loadGallery();}
-      }));
-      hide("galleryMessage");
-    }catch(e){fail("galleryMessage",e);}
-  }
-  $("galleryForm").addEventListener("submit",async e=>{
-    e.preventDefault();
-    try{
-      const {error}=await db.from("gallery_items").insert({
-        title:$("galleryTitle").value.trim()||"Նկար",
-        image_url:$("galleryUrl").value.trim()
-      });
-      if(error)throw error;
-      $("galleryTitle").value="";$("galleryUrl").value="";
-      notice("galleryMessage","Նկարը ավելացվեց։","success");await loadGallery();
-    }catch(e){fail("galleryMessage",e);}
-  });
-  async function loadSettings(){
-    try{
-      const {data,error}=await db.from("site_settings").select("*").eq("id",1).maybeSingle();
-      if(error)throw error;
-      if(data){
-        $("siteTitle").value=data.site_title||"";
-        $("siteAbout").value=data.about_text||"";
-        $("siteEmail").value=data.contact_email||"";
-        $("sitePhone").value=data.contact_phone||"";
-      }
-      hide("settingsMessage");
-    }catch(e){fail("settingsMessage",e);}
-  }
-  $("settingsForm").addEventListener("submit",async e=>{
-    e.preventDefault();
-    try{
-      const {error}=await db.from("site_settings").upsert({
-        id:1,site_title:$("siteTitle").value.trim(),
-        about_text:$("siteAbout").value.trim(),
-        contact_email:$("siteEmail").value.trim(),
-        contact_phone:$("sitePhone").value.trim()
-      });
-      if(error)throw error;
-      notice("settingsMessage","Տվյալները պահպանվեցին։","success");
-    }catch(e){fail("settingsMessage",e);}
-  });
-  async function loadAll(){
-    await Promise.all([loadApps(),loadRecords("program"),loadRecords("event"),loadGallery(),loadSettings()]);
-  }
-  $("refreshApps").addEventListener("click",loadApps);
-  start();
+(()=>{
+const URL="https://hcggnmvnqefhfrasyfdd.supabase.co";
+const KEY="sb_publishable_wyCGqA1H18QvyLOk6vXCcQ_UyR3i0_Z";
+const ADMIN="samsedrakyan15@gmail.com";
+const db=window.supabase.createClient(URL,KEY);
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function notice(id,text,type=""){const el=$(id);el.textContent=text;el.className="notice"+(type?" "+type:"");}
+function hide(id){$(id).classList.add("hidden")}
+function fail(id,e){notice(id,e?.message||"Սխալ տեղի ունեցավ։","error")}
+let programs=[],events=[];
+
+function showLogin(){$("appPanel").classList.add("hidden");$("loginPanel").classList.remove("hidden")}
+function showApp(user){$("loginPanel").classList.add("hidden");$("appPanel").classList.remove("hidden");$("who").textContent=user.email||""}
+async function checkAdmin(user){
+ if(!user||(user.email||"").toLowerCase()!==ADMIN){await db.auth.signOut();showLogin();notice("loginMessage","Այս հաշիվը ադմինի համար թույլատրված չէ։","error");return false}
+ return true;
+}
+$("loginForm").addEventListener("submit",async e=>{
+ e.preventDefault();$("loginBtn").disabled=true;hide("loginMessage");
+ try{const {data,error}=await db.auth.signInWithPassword({email:$("email").value.trim(),password:$("password").value});if(error)throw error;if(await checkAdmin(data.user)){showApp(data.user);await loadAll()}}
+ catch(err){fail("loginMessage",err)}finally{$("loginBtn").disabled=false}
+});
+$("logoutBtn").addEventListener("click",async()=>{await db.auth.signOut();showLogin()});
+db.auth.onAuthStateChange((_event,session)=>{if(!session)showLogin()});
+async function start(){const {data,error}=await db.auth.getSession();if(!error&&data.session&&await checkAdmin(data.session.user)){showApp(data.session.user);await loadAll()}}
+document.querySelectorAll("[data-tab]").forEach(btn=>btn.addEventListener("click",()=>{
+ document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b===btn));
+ ["applications","programs","events","gallery","settings"].forEach(t=>$("tab-"+t).classList.toggle("hidden",t!==btn.dataset.tab));
+}));
+
+async function loadApps(){
+ try{
+  const {data,error}=await db.from("volunteer_applications").select("*").order("created_at",{ascending:false});if(error)throw error;
+  $("appsBody").innerHTML=(data||[]).map(a=>`<tr><td>${esc(a.full_name)}</td><td>${esc(a.email)}</td><td>${esc(a.phone)}</td><td>${esc(a.age)}</td><td>${esc(a.program)}</td><td><select data-status="${esc(a.id)}">${["Նոր","Դիտարկվում է","Հաստատված է","Մերժված է"].map(s=>`<option ${a.status===s?"selected":""}>${s}</option>`).join("")}</select></td><td><button data-save="${esc(a.id)}">Պահպանել</button></td></tr>`).join("")||'<tr><td colspan="7">Հայտեր դեռ չկան։</td></tr>';
+  $("appsBody").querySelectorAll("[data-save]").forEach(b=>b.addEventListener("click",async()=>{try{const id=b.dataset.save;const status=$("appsBody").querySelector(`[data-status="${CSS.escape(id)}"]`).value;const {error}=await db.from("volunteer_applications").update({status}).eq("id",id);if(error)throw error;notice("appsMessage","Կարգավիճակը պահպանվեց։","success")}catch(err){fail("appsMessage",err)}}));
+  hide("appsMessage");
+ }catch(err){fail("appsMessage",err)}
+}
+
+function renderRows(rows,target,kind){
+ $(target).innerHTML=rows.map(r=>`<article class="item"><div class="top"><strong>${esc(r.title)}</strong><span>${r.published?"Հրապարակված է":"Սևագիր"}</span></div><p>${esc(r.description||"")}</p>${r.event_date?`<p>📅 ${esc(new Date(r.event_date).toLocaleString("hy-AM"))}</p>`:""}${r.location?`<p>📍 ${esc(r.location)}</p>`:""}${r.image_url?`<p><a href="${esc(r.image_url)}" target="_blank" rel="noopener">Դիտել նկարը</a></p>`:""}<div class="actions"><button class="secondary" data-edit="${kind}:${esc(r.id)}">Խմբագրել</button><button class="danger" data-del="${kind}:${esc(r.id)}">Ջնջել</button></div></article>`).join("")||'<p class="muted">Գրառումներ դեռ չկան։</p>';
+ $(target).querySelectorAll("[data-edit]").forEach(b=>b.addEventListener("click",()=>edit(kind,b.dataset.edit.split(":")[1])));
+ $(target).querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>remove(kind,b.dataset.del.split(":")[1])));
+}
+async function loadRecords(kind){
+ const table=kind==="program"?"programs":"events",target=kind==="program"?"programsList":"eventsList",msg=kind==="program"?"programsMessage":"eventsMessage";
+ try{const {data,error}=await db.from(table).select("*").order("created_at",{ascending:false});if(error)throw error;if(kind==="program")programs=data||[];else events=data||[];renderRows(data||[],target,kind);hide(msg)}catch(err){fail(msg,err)}
+}
+function clearForm(kind){
+ const ids=kind==="program"?["programId","programTitle","programImage","programDescription","programLink"]:["eventId","eventTitle","eventDate","eventLocation","eventImage","eventDescription","eventLink"];
+ ids.forEach(id=>$(id).value="");$(kind==="program"?"programPublished":"eventPublished").checked=false;$(kind==="program"?"programForm":"eventForm").classList.remove("hidden");
+}
+$("newProgram").addEventListener("click",()=>clearForm("program"));
+$("newEvent").addEventListener("click",()=>clearForm("event"));
+$("cancelProgram").addEventListener("click",()=>$("programForm").classList.add("hidden"));
+$("cancelEvent").addEventListener("click",()=>$("eventForm").classList.add("hidden"));
+function edit(kind,id){
+ const r=(kind==="program"?programs:events).find(x=>String(x.id)===String(id));if(!r)return;
+ if(kind==="program"){
+  $("programId").value=r.id;$("programTitle").value=r.title||"";$("programImage").value=r.image_url||"";$("programDescription").value=r.description||"";$("programLink").value=r.registration_url||"";$("programPublished").checked=!!r.published;$("programForm").classList.remove("hidden");
+ }else{
+  $("eventId").value=r.id;$("eventTitle").value=r.title||"";$("eventDate").value=r.event_date?r.event_date.slice(0,16):"";$("eventLocation").value=r.location||"";$("eventImage").value=r.image_url||"";$("eventDescription").value=r.description||"";$("eventLink").value=r.registration_url||"";$("eventPublished").checked=!!r.published;$("eventForm").classList.remove("hidden");
+ }
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+$("programForm").addEventListener("submit",async e=>{
+ e.preventDefault();const id=$("programId").value;
+ const row={title:$("programTitle").value.trim(),image_url:$("programImage").value.trim()||null,description:$("programDescription").value.trim()||null,registration_url:$("programLink").value.trim()||null,published:$("programPublished").checked};
+ try{const q=id?db.from("programs").update(row).eq("id",id):db.from("programs").insert(row);const {error}=await q;if(error)throw error;$("programForm").classList.add("hidden");notice("programsMessage","Ծրագիրը պահպանվեց։","success");await loadRecords("program")}catch(err){fail("programsMessage",err)}
+});
+$("eventForm").addEventListener("submit",async e=>{
+ e.preventDefault();const id=$("eventId").value;
+ const row={title:$("eventTitle").value.trim(),event_date:$("eventDate").value?new Date($("eventDate").value).toISOString():null,location:$("eventLocation").value.trim()||null,image_url:$("eventImage").value.trim()||null,description:$("eventDescription").value.trim()||null,registration_url:$("eventLink").value.trim()||null,published:$("eventPublished").checked};
+ try{const q=id?db.from("events").update(row).eq("id",id):db.from("events").insert(row);const {error}=await q;if(error)throw error;$("eventForm").classList.add("hidden");notice("eventsMessage","Միջոցառումը պահպանվեց։","success");await loadRecords("event")}catch(err){fail("eventsMessage",err)}
+});
+async function remove(kind,id){
+ if(!confirm("Հաստա՞տ ջնջել այս գրառումը։"))return;
+ const table=kind==="program"?"programs":"events",msg=kind==="program"?"programsMessage":"eventsMessage";
+ try{const {error}=await db.from(table).delete().eq("id",id);if(error)throw error;notice(msg,"Գրառումը ջնջվեց։","success");await loadRecords(kind)}catch(err){fail(msg,err)}
+}
+async function loadGallery(){
+ try{
+  const {data,error}=await db.from("gallery_items").select("*").order("created_at",{ascending:false});if(error)throw error;
+  $("galleryList").innerHTML=(data||[]).map(r=>`<article class="item"><strong>${esc(r.title||"Նկար")}</strong><p><a href="${esc(r.image_url)}" target="_blank" rel="noopener">Բացել նկարը</a></p><button class="danger" data-gallery="${esc(r.id)}">Ջնջել</button></article>`).join("")||"<p>Նկարներ դեռ չկան։</p>";
+  $("galleryList").querySelectorAll("[data-gallery]").forEach(b=>b.addEventListener("click",async()=>{if(!confirm("Ջնջե՞լ նկարը։"))return;try{const {error}=await db.from("gallery_items").delete().eq("id",b.dataset.gallery);if(error)throw error;notice("galleryMessage","Նկարը ջնջվեց։","success");await loadGallery()}catch(err){fail("galleryMessage",err)}}));hide("galleryMessage");
+ }catch(err){fail("galleryMessage",err)}
+}
+$("galleryForm").addEventListener("submit",async e=>{
+ e.preventDefault();try{const {error}=await db.from("gallery_items").insert({title:$("galleryTitle").value.trim()||"Նկար",image_url:$("galleryUrl").value.trim()});if(error)throw error;$("galleryTitle").value="";$("galleryUrl").value="";notice("galleryMessage","Նկարը ավելացվեց։","success");await loadGallery()}catch(err){fail("galleryMessage",err)}
+});
+
+const fields=["siteTitle","heroTitle","heroDescription","siteAbout","logoUrl","heroImageUrl","primaryColor","secondaryColor","footerText","siteEmail","sitePhone","instagramUrl","facebookUrl","telegramUrl"];
+const cols={siteTitle:"site_title",heroTitle:"hero_title",heroDescription:"hero_description",siteAbout:"about_text",logoUrl:"logo_url",heroImageUrl:"hero_image_url",primaryColor:"primary_color",secondaryColor:"secondary_color",footerText:"footer_text",siteEmail:"contact_email",sitePhone:"contact_phone",instagramUrl:"instagram_url",facebookUrl:"facebook_url",telegramUrl:"telegram_url"};
+$("logoUrl").addEventListener("input",()=>{const u=$("logoUrl").value.trim();$("logoPreview").src=u;$("logoPreview").classList.toggle("hidden",!u)});
+async function loadSettings(){
+ try{const {data,error}=await db.from("site_settings").select("*").eq("id",1).maybeSingle();if(error)throw error;
+  if(data)for(const id of fields){const v=data[cols[id]];if(v!==null&&v!==undefined&&v!=="")$(id).value=v}
+  const u=$("logoUrl").value.trim();if(u){$("logoPreview").src=u;$("logoPreview").classList.remove("hidden")}hide("settingsMessage");
+ }catch(err){fail("settingsMessage",err)}
+}
+$("settingsForm").addEventListener("submit",async e=>{
+ e.preventDefault();const row={id:1};for(const id of fields)row[cols[id]]=$(id).value.trim();
+ try{const {error}=await db.from("site_settings").upsert(row);if(error)throw error;notice("settingsMessage","Կարգավորումները պահպանվեցին Supabase-ում։ Հանրային էջում ցուցադրելու համար պետք է նաև թարմացնել index.html-ը։","success")}catch(err){fail("settingsMessage",err)}
+});
+async function loadAll(){await Promise.all([loadApps(),loadRecords("program"),loadRecords("event"),loadGallery(),loadSettings()])}
+$("refreshApps").addEventListener("click",loadApps);
+start();
 })();
 </script>
 </body>
